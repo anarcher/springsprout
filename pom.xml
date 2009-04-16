@@ -160,6 +160,11 @@
 		<repository>
 			<id>opensprout nexus</id>
 			<name>OpenSprout Nexus public</name>
+			<url>http://www.opensprout.org:8082/nexus/content/groups/public</url>
+		</repository>
+		<repository>
+			<id>opensprout nexus2</id>
+			<name>OpenSprout Nexus2 public</name>
 			<url>http://www.opensprout.org/nexus/content/groups/public</url>
 		</repository>
 		<repository>
