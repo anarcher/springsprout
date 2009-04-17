@@ -1,3 +1,4 @@
 README-*
-./webapp/WEB-INF/lib/*.jar
+./webapp/WEB-INF/lib/*
+./webapp/WEB-INF/classes/*
 *.class
