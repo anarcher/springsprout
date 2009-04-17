@@ -1,2 +1,5 @@
-README-*
 ./webapp/WEB-INF/lib/*.jar
+.classpath
+.project
+.settings/org.maven.ide.eclipse.prefs
+
