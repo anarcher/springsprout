@@ -13,9 +13,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
 import springsprout.domain.Member;
+import springsprout.member.support.OrderParam;
 import springsprout.member.support.SearchParam;
 import springsprout.paging.PageParam;
-
 
 @Repository
 public class MemberRepository {
@@ -48,22 +48,6 @@ public class MemberRepository {
 		getCurrentSession().update(member);
 	}
 
-	public List<Member> getMemberListByPageAndSearchParam(PageParam pageParam,
-			SearchParam searchParam) {
-		Criteria c = getCurrentSession().createCriteria(Member.class);
-
-		applySearchParam(searchParam, c);
-
-		//apply pageParam
-		c.setFirstResult(pageParam.getFirstRowNumber() - 1);
-		c.setMaxResults(pageParam.getSize());
-
-		//apply orderParam
-		c.addOrder(Order.asc("name")); //TODO
-
-		return c.list();
-	}
-
 	private void applySearchParam(SearchParam searchParam, Criteria c) {
 		if (StringUtils.hasText(searchParam.getName())) {
 			c.add(Restrictions.ilike("name", searchParam.getName(), MatchMode.ANYWHERE));
@@ -79,6 +63,33 @@ public class MemberRepository {
 		applySearchParam(searchParam, c);
 
 		return c.list().size();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Member> getMemberListByPageAndSearchParam(PageParam pageParam,
+			SearchParam searchParam, OrderParam orderParam) {
+		Criteria c = getCurrentSession().createCriteria(Member.class);
+
+		applySearchParam(searchParam, c);
+		applyPageParam(pageParam, c);
+		applyOrderParam(orderParam, c);
+
+		return c.list();
+	}
+
+	private void applyOrderParam(OrderParam orderParam, Criteria c) {
+		String field = orderParam.getField();
+		if(!StringUtils.hasText(field))
+			c.addOrder(Order.asc("id")); //apply default
+		else if(orderParam.getDirection().equals("desc"))
+			c.addOrder(Order.desc(field));
+		else
+			c.addOrder(Order.asc(field));
+	}
+
+	private void applyPageParam(PageParam pageParam, Criteria c) {
+		c.setFirstResult(pageParam.getFirstRowNumber() - 1);
+		c.setMaxResults(pageParam.getSize());
 	}
 
 }

@@ -9,12 +9,12 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>springsprout</title>
+<title>SpringSprout</title>
 </head>
 
 <body>
 <h1>수정</h1>
-<a href="/member/list.do?size=${pageParam.size}&page=${pageParam.page}&name=${searchParam.name}&email=${searchParam.email}">취소</a>
+<a href="/member/list.do?size=${pageParam.size}&page=${pageParam.page}&name=${searchParam.name}&email=${searchParam.email}&field=${orderParam.field}&direction=${orderParam.direction}">취소</a>
 <form:form commandName="member" method="post">
 이메일 : <form:input path="email" />
 	<form:errors path="email" />
