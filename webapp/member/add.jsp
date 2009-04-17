@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
@@ -8,23 +8,23 @@
 <html>
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>SpringSprout</title>
 </head>
 <body>
-<h1>ȸ�� �߰�</h1>
-<a href="/member/list.do">���</a>
+<h1>회원 추가</h1>
+<a href="/member/list.do">취소</a>
 <form:form commandName="member" method="post">
-�̸��� : <form:input path="email" />
+이메일 : <form:input path="email" />
 	<form:errors path="email" />
 	<br />
-��й�ȣ : <form:password path="password" />
+비밀번호 : <form:password path="password" />
 	<form:errors path="password" />
 	<br />
-�̸� : <form:input path="name" />
+이름 : <form:input path="name" />
 	<form:errors path="name" />
 	<br />
-	<input type="submit" value="����" />
+	<input type="submit" value="저장" />
 </form:form>
 </body>
 
