@@ -5,14 +5,14 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>springsprout</title>
+<title>SpringSprout</title>
 </head>
 
 <body>
 <div>
-<a href="/member/list.do?size=${pageParam.size}&page=${pageParam.page}&name=${searchParam.name}&email=${searchParam.email}">목록으로</a> |
-<a href="/member/update/${member.id}.do?size=${pageParam.size}&page=${pageParam.page}&name=${searchParam.name}&email=${searchParam.email}">수정</a> |
-<a href="/member/delete/${member.id}.do?size=${pageParam.size}&page=${pageParam.page}&name=${searchParam.name}&email=${searchParam.email}">삭제</a>
+<a href="/member/list.do?size=${pageParam.size}&page=${pageParam.page}&name=${searchParam.name}&email=${searchParam.email}&field=${orderParam.field}&direction=${orderParam.direction}">목록으로</a> |
+<a href="/member/update/${member.id}.do?size=${pageParam.size}&page=${pageParam.page}&name=${searchParam.name}&email=${searchParam.email}&field=${orderParam.field}&direction=${orderParam.direction}">수정</a> |
+<a href="/member/delete/${member.id}.do?size=${pageParam.size}&page=${pageParam.page}&name=${searchParam.name}&email=${searchParam.email}&field=${orderParam.field}&direction=${orderParam.direction}">삭제</a>
 </div>
 
 <div>

@@ -6,7 +6,6 @@ import org.springframework.validation.Errors;
 
 import springsprout.domain.Member;
 
-
 @Component
 public class MemberValidator {
 
