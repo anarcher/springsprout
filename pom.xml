@@ -146,32 +146,30 @@
 		</plugins>
 	</build>
 
-	<repositories>
-		<repository>
-			<id>spring-latest</id>
-			<name>Spring Latest by OpenSprout</name>
-			<url>http://www.opensprout.org/nexus/content/repositories/spring-latest</url>
-		</repository>
-		<repository>
-			<id>com.springsource.repository.bundles.external</id>
-			<name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
-			<url>http://repository.springsource.com/maven/bundles/external</url>
-		</repository>
-		<repository>
-			<id>opensprout nexus</id>
-			<name>OpenSprout Nexus public</name>
-			<url>http://www.opensprout.org:8082/nexus/content/groups/public</url>
-		</repository>
-		<repository>
-			<id>opensprout nexus2</id>
-			<name>OpenSprout Nexus2 public</name>
-			<url>http://www.opensprout.org/nexus/content/groups/public</url>
-		</repository>
-		<repository>
-			<id>opensprout nexus</id>
-			<name>OpenSprout Nexus public</name>
-			<url>http://www.opensprout.org/nexus/content/groups/public</url>
-		</repository>
-	</repositories>
+    <repositories>
+        <repository>
+            <id>spring-latest</id>
+            <name>Spring Latest by OpenSprout</name>
+            <url>
+http://www.opensprout.org/nexus/content/repositories/spring-latest</url>
+        </repository>
+        <repository>
+            <id>com.springsource.repository.bundles.external</id>
+            <name>SpringSource Enterprise Bundle Repository - External
+Bundle Releases</name>
+            <url>http://repository.springsource.com/maven/bundles/external
+</url>
+        </repository>
+        <repository>
+            <id>opensprout nexus2</id>
+            <name>OpenSprout Nexus2 public</name>
+            <url>http://www.opensprout.org/nexus/content/groups/public</url>
+        </repository>
+        <repository>
+            <id>opensprout nexus</id>
+            <name>OpenSprout Nexus public</name>
+            <url>http://www.opensprout.org/nexus/content/groups/public</url>
+        </repository>
+    </repositories> 
 
 </project>
