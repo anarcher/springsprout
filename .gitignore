@@ -2,3 +2,6 @@ README-*
 *.class
 target/*
 *.jar
+.project
+.classpath
+.settings/*
