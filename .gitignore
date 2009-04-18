@@ -1,3 +1,4 @@
 README-*
 *.class
 target/*
+*.jar
