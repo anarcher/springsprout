@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
@@ -8,24 +8,24 @@
 <html>
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>springsprout</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>SpringSprout</title>
 </head>
 
 <body>
-<h1>¼öÁ¤</h1>
-<a href="/member/list.do?size=${pageParam.size}&page=${pageParam.page}&name=${searchParam.name}&email=${searchParam.email}">Ãë¼Ò</a>
+<h1>ìˆ˜ì •</h1>
+<a href="/member/list.do?size=${pageParam.size}&page=${pageParam.page}&name=${searchParam.name}&email=${searchParam.email}&field=${orderParam.field}&direction=${orderParam.direction}">ì·¨ì†Œ</a>
 <form:form commandName="member" method="post">
-ÀÌ¸ÞÀÏ : <form:input path="email" />
+ì´ë©”ì¼ : <form:input path="email" />
 	<form:errors path="email" />
 	<br />
-ºñ¹Ð¹øÈ£ : <form:password path="password" />
+ë¹„ë°€ë²ˆí˜¸ : <form:password path="password" />
 	<form:errors path="password" />
 	<br />
-ÀÌ¸§ : <form:input path="name" />
+ì´ë¦„ : <form:input path="name" />
 	<form:errors path="name" />
 	<br />
-<input type="submit" value="ÀúÀå" />
+<input type="submit" value="ì €ìž¥" />
 </form:form>
 </body>
 
