@@ -48,15 +48,6 @@ public class MemberRepository {
 		getCurrentSession().update(member);
 	}
 
-	private void applySearchParam(SearchParam searchParam, Criteria c) {
-		if (StringUtils.hasText(searchParam.getName())) {
-			c.add(Restrictions.ilike("name", searchParam.getName(), MatchMode.ANYWHERE));
-		}
-		if (StringUtils.hasText(searchParam.getEmail())) {
-			c.add(Restrictions.ilike("email", searchParam.getEmail(), MatchMode.ANYWHERE));
-		}
-	}
-
 	public int getTotalRowsCountBy(SearchParam searchParam) {
 		Criteria c = getCurrentSession().createCriteria(Member.class);
 
@@ -75,6 +66,15 @@ public class MemberRepository {
 		applyOrderParam(orderParam, c);
 
 		return c.list();
+	}
+
+	private void applySearchParam(SearchParam searchParam, Criteria c) {
+		if (StringUtils.hasText(searchParam.getName())) {
+			c.add(Restrictions.ilike("name", searchParam.getName(), MatchMode.ANYWHERE));
+		}
+		if (StringUtils.hasText(searchParam.getEmail())) {
+			c.add(Restrictions.ilike("email", searchParam.getEmail(), MatchMode.ANYWHERE));
+		}
 	}
 
 	private void applyOrderParam(OrderParam orderParam, Criteria c) {

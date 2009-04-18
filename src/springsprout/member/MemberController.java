@@ -51,6 +51,8 @@ public class MemberController {
 	@RequestMapping("/member/list")
 	public ModelMap list(PageParam pageParam, SearchParam searchParam,
 			OrderParam orderParam) {
+		System.out.println(searchParam.getEmail());
+		System.out.println(searchParam.getName());
 		ModelMap modelMap = new ModelMap();
 		modelMap.addAttribute(service
 				.getMemberListByPageAndSearchAndOrderParam(pageParam,

@@ -1,18 +1,33 @@
+<<<<<<< HEAD:webapp/member/list.jsp
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+=======
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+>>>>>>> 7cd5916d4f96e581656981e2b77c3db0f0ba5de6:webapp/member/list.jsp
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>SpringSprout</title>
 </head>
 
 <body>
 <div>
 <a href="/member/add.do">회원 추가</a>
+<<<<<<< HEAD:webapp/member/list.jsp
+=======
+</div>
+
+<div>
+<form:form method="GET" commandName="searchParam">
+	이름: <form:input path="name" />
+	이메일: <form:input path="email" />
+	<input type="submit" value="검색" />
+</form:form>
+>>>>>>> 7cd5916d4f96e581656981e2b77c3db0f0ba5de6:webapp/member/list.jsp
 </div>
 
 <div>
@@ -21,11 +36,14 @@
 </c:if>
 
 <c:if test="${! empty memberList}">
+<<<<<<< HEAD:webapp/member/list.jsp
 <form:form method="GET" commandName="searchParam">
 	이름: <form:input path="name" />
 	이메일: <form:input path="email" />
 	<input type="submit" value="검색" />
 </form:form>
+=======
+>>>>>>> 7cd5916d4f96e581656981e2b77c3db0f0ba5de6:webapp/member/list.jsp
 
 
 페이지 사이즈: ${pageParam.size}<br/>
