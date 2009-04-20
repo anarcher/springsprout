@@ -1,7 +1,7 @@
-README-*
-*.class
 target/*
-*.jar
+webapp/WEB-INF/classes/*
+webapp/WEB-INF/lib/*
 .project
 .classpath
 .settings/*
+*.class
