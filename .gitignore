@@ -1,7 +1,4 @@
 target/*
 webapp/WEB-INF/classes/*
 webapp/WEB-INF/lib/*
-.project
-.classpath
-.settings/*
 *.class
