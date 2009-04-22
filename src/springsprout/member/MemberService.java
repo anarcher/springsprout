@@ -7,9 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import springsprout.domain.Member;
-import springsprout.member.support.OrderParam;
-import springsprout.member.support.SearchParam;
-import springsprout.paging.PageParam;
+import springsprout.member.support.MemberContext;
 
 @Service
 @Transactional
@@ -39,10 +37,9 @@ public class MemberService {
 		repository.update(member);
 	}
 
-	public List<Member> getMemberListByPageAndSearchAndOrderParam(
-			PageParam pageParam, SearchParam searchParam, OrderParam orderParam) {
-		pageParam.setTotalRowsCount(repository.getTotalRowsCountBy(searchParam));
-		return repository.getMemberListByPageAndSearchParam(pageParam, searchParam, orderParam);
+	public List<Member> getMemberListByContext(MemberContext context) {
+		context.setTotalRowsCount(repository.getTotalRowsCount(context.getSearchParam()));
+		return repository.getMemberListByContext(context);
 	}
 
 }

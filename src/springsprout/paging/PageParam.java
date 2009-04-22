@@ -2,13 +2,16 @@ package springsprout.paging;
 
 public class PageParam {
 
+	public static final int DEFAULT_SIZE = 5;
+	public static final int DEFAULT_PAGE = 1;
+
 	private int size; // number of items in one page.
 	private int page; // page number.
 	private int totalRowsCount;
 
 	public PageParam() {
-		size = 5; // default
-		page = 1; // default
+		size = DEFAULT_SIZE;
+		page = DEFAULT_PAGE;
 	}
 
 	public int getSize() {
