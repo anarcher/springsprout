@@ -37,22 +37,22 @@
 	<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&s_name=${c.searchParam.name}&s_email=${c.searchParam.email}&o_field=${c.orderParam.field}&o_direction=${c.orderParam.direction}">처음</a> |
 
 	<c:if test="${c.pageParam.beginPage - 10 > 0}">
-		<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&s_name=${c.searchParam.name}&s_email=${c.searchParam.email}&o_field=${c.orderParam.field}&o_direction=${c.orderParam.direction}">이전</a> |
+		<a href="/member/list.do?p_page=${c.pageParam.beginPage - 10}&p_size=${c.pageParam.size}&s_name=${c.searchParam.name}&s_email=${c.searchParam.email}&o_field=${c.orderParam.field}&o_direction=${c.orderParam.direction}">이전</a> |
 	</c:if>
 
-	<c:forEach begin="${c.pageParam.beginPage}" end="${c.pageParam.endPage}" varStatus="current">
+	<c:forEach begin="${c.pageParam.beginPage}" end="${c.pageParam.endPage}" var="current" >
 		<c:choose>
-			<c:when test="${current.count == c.pageParam.page}">
-				<a href="/member/list.do?p_page=${current.count}&p_size=${c.pageParam.size}&s_name=${c.searchParam.name}&s_email=${c.searchParam.email}&o_field=${c.orderParam.field}&o_direction=${c.orderParam.direction}"><strong>${current.count}</strong></a> |
+			<c:when test="${current == c.pageParam.page}">
+				<a href="/member/list.do?p_page=${current}&p_size=${c.pageParam.size}&s_name=${c.searchParam.name}&s_email=${c.searchParam.email}&o_field=${c.orderParam.field}&o_direction=${c.orderParam.direction}"><strong>${current}</strong></a> |
 			</c:when>
 			<c:otherwise>
-				<a href="/member/list.do?p_page=${current.count}&p_size=${c.pageParam.size}&s_name=${c.searchParam.name}&s_email=${c.searchParam.email}&o_field=${c.orderParam.field}&o_direction=${c.orderParam.direction}">${current.count}</a> |
+				<a href="/member/list.do?p_page=${current}&p_size=${c.pageParam.size}&s_name=${c.searchParam.name}&s_email=${c.searchParam.email}&o_field=${c.orderParam.field}&o_direction=${c.orderParam.direction}">${current}</a> |
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
 
 	<c:if test="${c.pageParam.beginPage + 10 < c.pageParam.totalPage}">
-		<a href="/member/list.do?p_page=${current.count + 10}&p_size=${c.pageParam.size}&s_name=${c.searchParam.name}&s_email=${c.searchParam.email}&o_field=${c.orderParam.field}&o_direction=${c.orderParam.direction}">다음</a> |
+		<a href="/member/list.do?p_page=${c.pageParam.endPage + 1}&p_size=${c.pageParam.size}&s_name=${c.searchParam.name}&s_email=${c.searchParam.email}&o_field=${c.orderParam.field}&o_direction=${c.orderParam.direction}">다음</a> |
 	</c:if>
 
 	<a href="/member/list.do?p_page=${c.pageParam.totalPage}&p_size=${c.pageParam.size}&s_name=${c.searchParam.name}&s_email=${c.searchParam.email}&o_field=${c.orderParam.field}&o_direction=${c.orderParam.direction}">마지막</a>

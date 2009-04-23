@@ -49,7 +49,7 @@ public class PageParam {
 	}
 
 	public int getEndPage() {
-		int endPage = page/10 * 10 + 9;
+		int endPage = 10 * (page/10 + 1);
 		if(getTotalPage() < endPage)
 			return getTotalPage();
 		else

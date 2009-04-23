@@ -33,7 +33,7 @@ public class PageParamTest {
 	public void endPage() throws Exception {
 		assertEndPage(5, 9, 1, 2);
 		assertEndPage(10, 9, 1, 1);
-		assertEndPage(5, 1000, 29, 29);
+		assertEndPage(5, 1000, 29, 30);
 	}
 
 	private void assertEndPage(int size, int totalRowsCount, int page, int endPage) {
