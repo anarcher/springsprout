@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
 import springsprout.domain.Member;
+import springsprout.member.support.MemberContext;
 import springsprout.member.support.OrderParam;
 import springsprout.member.support.SearchParam;
 import springsprout.paging.PageParam;
@@ -48,26 +49,6 @@ public class MemberRepository {
 		getCurrentSession().update(member);
 	}
 
-	public int getTotalRowsCountBy(SearchParam searchParam) {
-		Criteria c = getCurrentSession().createCriteria(Member.class);
-
-		applySearchParam(searchParam, c);
-
-		return c.list().size();
-	}
-
-	@SuppressWarnings("unchecked")
-	public List<Member> getMemberListByPageAndSearchParam(PageParam pageParam,
-			SearchParam searchParam, OrderParam orderParam) {
-		Criteria c = getCurrentSession().createCriteria(Member.class);
-
-		applySearchParam(searchParam, c);
-		applyPageParam(pageParam, c);
-		applyOrderParam(orderParam, c);
-
-		return c.list();
-	}
-
 	private void applySearchParam(SearchParam searchParam, Criteria c) {
 		if (StringUtils.hasText(searchParam.getName())) {
 			c.add(Restrictions.ilike("name", searchParam.getName(), MatchMode.ANYWHERE));
@@ -75,6 +56,14 @@ public class MemberRepository {
 		if (StringUtils.hasText(searchParam.getEmail())) {
 			c.add(Restrictions.ilike("email", searchParam.getEmail(), MatchMode.ANYWHERE));
 		}
+	}
+
+	public int getTotalRowsCount(SearchParam searchParam) {
+		Criteria c = getCurrentSession().createCriteria(Member.class);
+
+		applySearchParam(searchParam, c);
+
+		return c.list().size();
 	}
 
 	private void applyOrderParam(OrderParam orderParam, Criteria c) {
@@ -90,6 +79,17 @@ public class MemberRepository {
 	private void applyPageParam(PageParam pageParam, Criteria c) {
 		c.setFirstResult(pageParam.getFirstRowNumber() - 1);
 		c.setMaxResults(pageParam.getSize());
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Member> getMemberListByContext(MemberContext context) {
+		Criteria c = getCurrentSession().createCriteria(Member.class);
+
+		applySearchParam(context.getSearchParam(), c);
+		applyPageParam(context.getPageParam(), c);
+		applyOrderParam(context.getOrderParam(), c);
+
+		return c.list();
 	}
 
 }

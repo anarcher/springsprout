@@ -3,4 +3,6 @@ webapp/WEB-INF/classes/*
 webapp/WEB-INF/lib/*
 *.class
 .classpath
+.project
 .settings/*
+*.log

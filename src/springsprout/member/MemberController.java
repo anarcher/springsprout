@@ -1,10 +1,14 @@
 package springsprout.member;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,9 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import springsprout.domain.Member;
-import springsprout.member.support.OrderParam;
-import springsprout.member.support.SearchParam;
-import springsprout.paging.PageParam;
+import springsprout.member.support.MemberContext;
 
 @Controller
 @SessionAttributes("member")
@@ -25,6 +27,9 @@ public class MemberController {
 
 	@Autowired
 	MemberValidator validator;
+
+	@Autowired
+	MemberContext context;
 
 	// Create
 	@RequestMapping(value = "/member/add", method = RequestMethod.GET)
@@ -49,80 +54,58 @@ public class MemberController {
 
 	// Read
 	@RequestMapping("/member/list")
-	public ModelMap list(PageParam pageParam, SearchParam searchParam,
-			OrderParam orderParam) {
-		System.out.println(searchParam.getEmail());
-		System.out.println(searchParam.getName());
+	public ModelMap list(HttpServletRequest request,
+			HttpServletResponse response) throws ServletRequestBindingException {
+		context.bindParams(request);
 		ModelMap modelMap = new ModelMap();
-		modelMap.addAttribute(service
-				.getMemberListByPageAndSearchAndOrderParam(pageParam,
-						searchParam, orderParam));
-		modelMap.addAttribute(pageParam);
-		modelMap.addAttribute(searchParam);
-		modelMap.addAttribute(orderParam);
+		modelMap.addAttribute(service.getMemberListByContext(context));
+		modelMap.addAttribute("c", context);
 		return modelMap;
 	}
 
 	@RequestMapping("/member/{id}")
-	public String view(@PathVariable int id, Model model, PageParam pageParam,
-			SearchParam searchParam, OrderParam orderParam) {
+	public String view(@PathVariable int id, Model model,
+			HttpServletRequest request, HttpServletResponse response)
+			throws ServletRequestBindingException {
+		context.bindParams(request);
 		model.addAttribute(service.getMemberById(id));
-		model.addAttribute(pageParam);
-		model.addAttribute(searchParam);
-		model.addAttribute(orderParam);
+		model.addAttribute("c", context);
 		return "member/view";
 	}
 
 	// Update
 	@RequestMapping(value = "/member/update/{id}", method = RequestMethod.GET)
 	public String updateForm(@PathVariable int id, Model model,
-			PageParam pageParam, SearchParam searchParam, OrderParam orderParam) {
+			HttpServletRequest request, HttpServletResponse response)
+			throws ServletRequestBindingException {
+		context.bindParams(request);
 		model.addAttribute(service.getMemberById(id));
-		model.addAttribute(pageParam);
-		model.addAttribute(searchParam);
-		model.addAttribute(orderParam);
+		model.addAttribute("c", context);
 		return "member/update";
 	}
 
 	@RequestMapping(value = "/member/update/{id}", method = RequestMethod.POST)
-	public String updateForm(PageParam pageParam, SearchParam searchParam,
-			OrderParam orderParam, Member member, BindingResult result,
-			SessionStatus status) {
+	public String updateForm(Member member, BindingResult result,
+			SessionStatus status, HttpServletRequest request,
+			HttpServletResponse response) throws ServletRequestBindingException {
+		context.bindParams(request);
 		validator.validate(member, result);
 		if (result.hasErrors()) {
 			return "member/update";
 		} else {
 			service.update(member);
 			status.isComplete();
-			return redirectURLWithPageAndSearchAndOrderParam(pageParam,
-					searchParam, orderParam);
+			return context.getRedirectToListURL();
 		}
 	}
 
 	// Delete
 	@RequestMapping("/member/delete/{id}")
-	public String delete(@PathVariable int id, PageParam pageParam,
-			SearchParam searchParam, OrderParam orderParam) {
+	public String delete(@PathVariable int id, HttpServletRequest request,
+			HttpServletResponse response) throws ServletRequestBindingException {
+		context.bindParams(request);
 		service.deleteById(id);
-		return redirectURLWithPageAndSearchAndOrderParam(pageParam, searchParam, orderParam);
-	}
-
-	private String redirectURLWithPageAndSearchAndOrderParam(
-			PageParam pageParam, SearchParam searchParam, OrderParam orderParam) {
-		return redirectURLWithPageAndSearchParam(pageParam, searchParam)
-				+ "&field=" + orderParam.getField() + "&direction="
-				+ orderParam.getDirection();
-	}
-
-	private String redirectURLWithPageAndSearchParam(PageParam pageParam,
-			SearchParam searchParam) {
-		return pagedListURL(pageParam) + "&name=" + searchParam.getName()
-				+ "&email=" + searchParam.getEmail();
-	}
-
-	private String pagedListURL(PageParam pageParam) {
-		return "redirect:/member/list.do?size=" + pageParam.getSize()
-		+ "&page=" + pageParam.getPage();
+		return context.getRedirectToListURL();
 	}
 
 }
