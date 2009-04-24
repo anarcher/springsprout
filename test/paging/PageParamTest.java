@@ -7,7 +7,6 @@ import org.junit.Test;
 
 import springsprout.paging.PageParam;
 
-
 public class PageParamTest {
 
 	PageParam pageParam;
@@ -22,6 +21,8 @@ public class PageParamTest {
 		assertBeginPage(13, 11);
 		assertBeginPage(11, 11);
 		assertBeginPage(29, 21);
+		assertBeginPage(10, 1);
+		assertBeginPage(20, 11);
 	}
 
 	private void assertBeginPage(int page, int beginPage) {
@@ -34,6 +35,7 @@ public class PageParamTest {
 		assertEndPage(5, 9, 1, 2);
 		assertEndPage(10, 9, 1, 1);
 		assertEndPage(5, 1000, 29, 30);
+		assertEndPage(5, 1000, 10, 10);
 	}
 
 	private void assertEndPage(int size, int totalRowsCount, int page, int endPage) {

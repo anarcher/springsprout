@@ -10,9 +10,9 @@
 
 <body>
 <div>
-<a href="/member/list.do?p_size=${c.pageParam.size}&p_page=${c.pageParam.page}&s_name=${c.searchParam.name}&s_email=${c.searchParam.email}&o_field=${c.orderParam.field}&o_direction=${c.orderParam.direction}">목록으로</a> |
-<a href="/member/update/${member.id}.do?p_size=${c.pageParam.size}&p_page=${c.pageParam.page}&s_name=${c.searchParam.name}&s_email=${c.searchParam.email}&o_field=${c.orderParam.field}&o_direction=${c.orderParam.direction}">수정</a> |
-<a href="/member/delete/${member.id}.do?p_size=${c.pageParam.size}&p_page=${c.pageParam.page}&s_name=${c.searchParam.name}&s_email=${c.searchParam.email}&o_field=${c.orderParam.field}&o_direction=${c.orderParam.direction}">삭제</a>
+<a href="/member/list.do?${c.allParamURL}">목록으로</a> |
+<a href="/member/update/${member.id}.do?${c.allParamURL}">수정</a> |
+<a href="/member/delete/${member.id}.do?${c.allParamURL}">삭제</a>
 </div>
 
 <div>

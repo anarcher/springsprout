@@ -22,4 +22,18 @@ public class SearchParam {
 		this.email = email;
 	}
 
+	public String getParamURL() {
+		String result = "";
+
+		result += "&s_name=";
+		if (name != null)
+			result += name;
+
+		result += "&s_email=";
+		if (email != null)
+			result += email;
+
+		return result;
+	}
+
 }

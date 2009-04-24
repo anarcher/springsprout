@@ -45,10 +45,16 @@ public class PageParam {
 	}
 
 	public int getBeginPage(){
+		if(page%10 == 0)
+			return page - 9;
+
 		return page/10 * 10 + 1;
 	}
 
 	public int getEndPage() {
+		if(page%10 == 0)
+			return page;
+
 		int endPage = 10 * (page/10 + 1);
 		if(getTotalPage() < endPage)
 			return getTotalPage();
@@ -61,6 +67,20 @@ public class PageParam {
 		if(totalRowsCount%size != 0)
 			totalPage += 1;
 		return totalPage;
+	}
+
+	public String getParamURL() {
+		String result = "";
+
+		result += "p_page=";
+		if (page > 0)
+			result += page;
+
+		result += "&p_size=";
+		if (size > 0)
+			result += size;
+
+		return result;
 	}
 
 }

@@ -22,4 +22,18 @@ public class OrderParam {
 		this.direction = direction;
 	}
 
+	public String getParamURL() {
+		String result = "";
+
+		result += "&o_field=";
+		if (field != null)
+			result += field;
+
+		result += "&o_direction=";
+		if (direction != null)
+			result += direction;
+
+		return result;
+	}
+
 }
