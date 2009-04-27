@@ -25,25 +25,25 @@ public class MemberContextTest {
 	}
 
 	@Test
-	public void getAllParamURL() throws Exception {
+	public void getAllParam() throws Exception {
 		assertEquals("p_page=1&p_size=5&s_name=&s_email=&o_field=&o_direction=",
-				context.getAllParamURL());
+				context.getAllParam());
 	}
 
 	@Test
-	public void getPageParamURL() throws Exception {
-		assertEquals("p_page=1&p_size=5", context.getPageParamURL());
+	public void getPageParam() throws Exception {
+		assertEquals("p_page=1&p_size=5", context.getPageParam().toString());
 	}
 
 	@Test
-	public void getSearchParamURL() throws Exception {
-		assertEquals("&s_name=&s_email=", context.getSearchParamURL());
+	public void getSearchParam() throws Exception {
+		assertEquals("s_name=&s_email=", context.getSearchParam().toString());
 	}
 
 
 	@Test
-	public void getOrderParamURL() throws Exception {
-		assertEquals("&o_field=&o_direction=", context.getOrderParamURL());
+	public void getOrderParam() throws Exception {
+		assertEquals("o_field=&o_direction=", context.getOrderParam().toString());
 	}
 
 	@Test

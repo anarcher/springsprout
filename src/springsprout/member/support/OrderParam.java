@@ -22,10 +22,11 @@ public class OrderParam {
 		this.direction = direction;
 	}
 
-	public String getParamURL() {
+	@Override
+	public String toString() {
 		String result = "";
 
-		result += "&o_field=";
+		result += "o_field=";
 		if (field != null)
 			result += field;
 

@@ -69,7 +69,8 @@ public class PageParam {
 		return totalPage;
 	}
 
-	public String getParamURL() {
+	@Override
+	public String toString() {
 		String result = "";
 
 		result += "p_page=";

@@ -22,10 +22,11 @@ public class SearchParam {
 		this.email = email;
 	}
 
-	public String getParamURL() {
+	@Override
+	public String toString() {
 		String result = "";
 
-		result += "&s_name=";
+		result += "s_name=";
 		if (name != null)
 			result += name;
 

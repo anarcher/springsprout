@@ -2,8 +2,6 @@ package springsprout.member.support;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.ServletRequestUtils;
@@ -12,8 +10,6 @@ import springsprout.paging.PageParam;
 
 @Component
 public class MemberContext {
-
-	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	PageParam pageParam;
 
@@ -74,27 +70,11 @@ public class MemberContext {
 	}
 
 	public String getRedirectToListURL() {
-		return "redirect:/member/list.do?p_size=" + pageParam.getSize()
-				+ "&p_page=" + pageParam.getPage() + "&s_name="
-				+ searchParam.getName() + "&s_email=" + searchParam.getEmail()
-				+ "&o_field=" + orderParam.getField() + "&o_direction="
-				+ orderParam.getDirection();
+		return "redirect:/member/list.do?" + getAllParam();
 	}
 
-	public String getAllParamURL(){
-		return getPageParamURL() + getSearchParamURL() + getOrderParamURL();
-	}
-
-	public String getOrderParamURL() {
-		return orderParam.getParamURL();
-	}
-
-	public String getSearchParamURL() {
-		return searchParam.getParamURL();
-	}
-
-	public String getPageParamURL() {
-		return pageParam.getParamURL();
+	public String getAllParam(){
+		return pageParam + "&" + searchParam + "&" + orderParam;
 	}
 
 }
