@@ -1,4 +1,4 @@
-package paging;
+package springsprout.paging;
 
 import static org.junit.Assert.*;
 
