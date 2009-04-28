@@ -79,4 +79,8 @@ public class PageParam {
 		return builder.toString();
 	}
 
+	public int[] getPageSizes(){
+		return new int[]{5, 10, 20, 50, 100};
+	}
+
 }

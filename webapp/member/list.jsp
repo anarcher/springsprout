@@ -13,7 +13,7 @@
 <div>
 <a href="/member/add.do">회원 추가</a>
 
-<form method="GET" action="/member/list.do">
+<form method="get" action="/member/list.do">
 	이름: <input type="text" name="s_name" value="${c.searchParam.name}" />
 	이메일: <input type="text" name="s_email" value="${c.searchParam.email}" />
 	<input type="submit" value="검색" />
@@ -33,6 +33,21 @@
 총 갯수: ${c.pageParam.totalRowsCount}<br/>
 현재 페이지 첫 번째 목록 인덱스: ${c.pageParam.firstRowNumber}<br/>
 
+<form method="get" action="/member/list.do?p_page=${c.pageParam.page}&${c.searchParam}&${c.orderParam}">
+	<select name="p_size">
+		<c:forEach items="${c.pageParam.pageSizes}" var="currentSize">
+			<c:choose>
+			<c:when test="${currentSize == c.pageParam.size}">
+				<option value="${currentSize}" selected="selected">${currentSize}</option>
+			</c:when>
+			<c:otherwise>
+				<option value="${currentSize}">${currentSize}</option>
+			</c:otherwise>
+			</c:choose>
+		</c:forEach>
+	</select>
+	<input type="submit" value="페이징" />
+</form>
 <c:if test="${c.pageParam.totalRowsCount > c.pageParam.size}">
 
 	<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&${c.searchParam}&${c.orderParam}">처음</a> |
