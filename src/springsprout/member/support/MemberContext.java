@@ -11,11 +11,11 @@ import springsprout.paging.PageParam;
 @Component
 public class MemberContext {
 
-	private PageParam pageParam;
+	PageParam pageParam;
 
-	private OrderParam orderParam;
+	OrderParam orderParam;
 
-	private SearchParam searchParam;
+	SearchParam searchParam;
 
 	public PageParam getPageParam() {
 		return pageParam;
@@ -29,28 +29,37 @@ public class MemberContext {
 		return searchParam;
 	}
 
-	private void bindOrderParam(HttpServletRequest request) throws ServletRequestBindingException {
+	private void bindOrderParam(HttpServletRequest request)
+			throws ServletRequestBindingException {
 		OrderParam orderParam = new OrderParam();
-		orderParam.setDirection(ServletRequestUtils.getStringParameter(request, "o_direction"));
-		orderParam.setField(ServletRequestUtils.getStringParameter(request, "o_field"));
+		orderParam.setDirection(ServletRequestUtils.getStringParameter(request,
+				"o_direction"));
+		orderParam.setField(ServletRequestUtils.getStringParameter(request,
+				"o_field"));
 		this.orderParam = orderParam;
 	}
 
-	private void bindSearchParam(HttpServletRequest request) throws ServletRequestBindingException {
+	private void bindSearchParam(HttpServletRequest request)
+			throws ServletRequestBindingException {
 		SearchParam searchParam = new SearchParam();
-		searchParam.setEmail(ServletRequestUtils.getStringParameter(request, "s_email"));
-		searchParam.setName(ServletRequestUtils.getStringParameter(request, "s_name"));
+		searchParam.setEmail(ServletRequestUtils.getStringParameter(request,
+				"s_email"));
+		searchParam.setName(ServletRequestUtils.getStringParameter(request,
+				"s_name"));
 		this.searchParam = searchParam;
 	}
 
 	private void bindPageParam(HttpServletRequest request) {
 		PageParam pageParam = new PageParam();
-		pageParam.setPage(ServletRequestUtils.getIntParameter(request, "p_page", PageParam.DEFAULT_PAGE));
-		pageParam.setSize(ServletRequestUtils.getIntParameter(request, "p_size", PageParam.DEFAULT_SIZE));
+		pageParam.setPage(ServletRequestUtils.getIntParameter(request,
+				"p_page", PageParam.DEFAULT_PAGE));
+		pageParam.setSize(ServletRequestUtils.getIntParameter(request,
+				"p_size", PageParam.DEFAULT_SIZE));
 		this.pageParam = pageParam;
 	}
 
-	public void bindParams(HttpServletRequest request) throws ServletRequestBindingException {
+	public void bindParams(HttpServletRequest request)
+			throws ServletRequestBindingException {
 		bindOrderParam(request);
 		bindSearchParam(request);
 		bindPageParam(request);
@@ -61,11 +70,11 @@ public class MemberContext {
 	}
 
 	public String getRedirectToListURL() {
-		return "redirect:/member/list.do?p_size=" + pageParam.getSize()
-				+ "&p_page=" + pageParam.getPage() + "&s_name="
-				+ searchParam.getName() + "&s_email=" + searchParam.getEmail()
-				+ "&o_field=" + orderParam.getField() + "&o_direction="
-				+ orderParam.getDirection();
+		return "redirect:/member/list.do?" + getAllParam();
+	}
+
+	public String getAllParam(){
+		return pageParam + "&" + searchParam + "&" + orderParam;
 	}
 
 }

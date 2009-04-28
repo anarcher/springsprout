@@ -1,5 +1,7 @@
 package springsprout.member.support;
 
+import springsprout.web.URLBuilder;
+
 public class SearchParam {
 
 	private String name;
@@ -20,6 +22,14 @@ public class SearchParam {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	@Override
+	public String toString() {
+		URLBuilder builder = new URLBuilder();
+		builder.addParameter("s_name", name, "");
+		builder.addParameter("s_email", email, "");
+		return builder.toString();
 	}
 
 }

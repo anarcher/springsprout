@@ -6,3 +6,5 @@ webapp/WEB-INF/lib/*
 .project
 .settings/*
 *.log
+.svn
+.svn/*

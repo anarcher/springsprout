@@ -1,61 +1,77 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>SpringSprout</title>
 </head>
 
 <body>
 <div>
-<a href="/member/add.do">È¸¿ø Ãß°¡</a>
+<a href="/member/add.do">íšŒì› ì¶”ê°€</a>
 
-<form method="GET" action="/member/list.do">
-	ÀÌ¸§: <input type="text" name="s_name" value="${c.searchParam.name}" />
-	ÀÌ¸ŞÀÏ: <input type="text" name="s_email" value="${c.searchParam.email}" />
-	<input type="submit" value="°Ë»ö" />
+<form method="get" action="/member/list.do">
+	ì´ë¦„: <input type="text" name="s_name" value="${c.searchParam.name}" />
+	ì´ë©”ì¼: <input type="text" name="s_email" value="${c.searchParam.email}" />
+	<input type="submit" value="ê²€ìƒ‰" />
 </form>
 </div>
 
 <div>
 <c:if test="${empty memberList}">
-È¸¿ø ¸ñ·ÏÀÌ ¾ø½À´Ï´Ù.
+íšŒì› ëª©ë¡ì´ ì—†ìŠµë‹ˆë‹¤.
 </c:if>
 
 <c:if test="${! empty memberList}">
 
-ÆäÀÌÁö »çÀÌÁî: ${c.pageParam.size}<br/>
-ÇöÀç ÆäÀÌÁö: ${c.pageParam.page}<br/>
-ÃÑ °¹¼ö: ${c.pageParam.totalRowsCount}<br/>
-ÇöÀç ÆäÀÌÁö Ã¹ ¹øÂ° ¸ñ·Ï ÀÎµ¦½º: ${c.pageParam.firstRowNumber}<br/>
+í˜ì´ì§€ ì‚¬ì´ì¦ˆ: ${c.pageParam.size}<br/>
+í˜„ì¬ í˜ì´ì§€: ${c.pageParam.page}<br/>
+ì´ í˜ì´ì§€: ${c.pageParam.totalPage}<br/>
+ì´ ê°¯ìˆ˜: ${c.pageParam.totalRowsCount}<br/>
+í˜„ì¬ í˜ì´ì§€ ì²« ë²ˆì§¸ ëª©ë¡ ì¸ë±ìŠ¤: ${c.pageParam.firstRowNumber}<br/>
 
-<c:if test="${c.pageParam.totalRowsCount > c.pageParam.size}">
-
-	<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&s_name=${c.searchParam.name}&s_email=${c.searchParam.email}&o_field=${c.orderParam.field}&o_direction=${c.orderParam.direction}">Ã³À½</a> |
-
-	<c:if test="${c.pageParam.beginPage - 10 > 0}">
-		<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&s_name=${c.searchParam.name}&s_email=${c.searchParam.email}&o_field=${c.orderParam.field}&o_direction=${c.orderParam.direction}">ÀÌÀü</a> |
-	</c:if>
-
-	<c:forEach begin="${c.pageParam.beginPage}" end="${c.pageParam.endPage}" varStatus="current">
-		<c:choose>
-			<c:when test="${current.count == c.pageParam.page}">
-				<a href="/member/list.do?p_page=${current.count}&p_size=${c.pageParam.size}&s_name=${c.searchParam.name}&s_email=${c.searchParam.email}&o_field=${c.orderParam.field}&o_direction=${c.orderParam.direction}"><strong>${current.count}</strong></a> |
+<form method="get" action="/member/list.do?p_page=${c.pageParam.page}&${c.searchParam}&${c.orderParam}">
+	<select name="p_size">
+		<c:forEach items="${c.pageParam.pageSizes}" var="currentSize">
+			<c:choose>
+			<c:when test="${currentSize == c.pageParam.size}">
+				<option value="${currentSize}" selected="selected">${currentSize}</option>
 			</c:when>
 			<c:otherwise>
-				<a href="/member/list.do?p_page=${current.count}&p_size=${c.pageParam.size}&s_name=${c.searchParam.name}&s_email=${c.searchParam.email}&o_field=${c.orderParam.field}&o_direction=${c.orderParam.direction}">${current.count}</a> |
+				<option value="${currentSize}">${currentSize}</option>
+			</c:otherwise>
+			</c:choose>
+		</c:forEach>
+	</select>
+	<input type="submit" value="í˜ì´ì§•" />
+</form>
+<c:if test="${c.pageParam.totalRowsCount > c.pageParam.size}">
+
+	<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&${c.searchParam}&${c.orderParam}">ì²˜ìŒ</a> |
+
+	<c:if test="${c.pageParam.beginPage - 10 > 0}">
+		<a href="/member/list.do?p_page=${c.pageParam.beginPage - 10}&p_size=${c.pageParam.size}&${c.searchParam}&${c.orderParam}">ì´ì „</a> |
+	</c:if>
+
+	<c:forEach begin="${c.pageParam.beginPage}" end="${c.pageParam.endPage}" var="current" >
+		<c:choose>
+			<c:when test="${current == c.pageParam.page}">
+				<a href="/member/list.do?p_page=${current}&p_size=${c.pageParam.size}&${c.searchParam}&${c.orderParam}"><strong>${current}</strong></a> |
+			</c:when>
+			<c:otherwise>
+				<a href="/member/list.do?p_page=${current}&p_size=${c.pageParam.size}&${c.searchParam}&${c.orderParam}">${current}</a> |
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
 
 	<c:if test="${c.pageParam.beginPage + 10 < c.pageParam.totalPage}">
-		<a href="/member/list.do?p_page=${current.count + 10}&p_size=${c.pageParam.size}&s_name=${c.searchParam.name}&s_email=${c.searchParam.email}&o_field=${c.orderParam.field}&o_direction=${c.orderParam.direction}">´ÙÀ½</a> |
+		<a href="/member/list.do?p_page=${c.pageParam.endPage + 1}&p_size=${c.pageParam.size}&${c.searchParam}&${c.orderParam}">ë‹¤ìŒ</a> |
 	</c:if>
 
-	<a href="/member/list.do?p_page=${c.pageParam.totalPage}&p_size=${c.pageParam.size}&s_name=${c.searchParam.name}&s_email=${c.searchParam.email}&o_field=${c.orderParam.field}&o_direction=${c.orderParam.direction}">¸¶Áö¸·</a>
+	<a href="/member/list.do?p_page=${c.pageParam.totalPage}&p_size=${c.pageParam.size}&${c.searchParam}&${c.orderParam}">ë§ˆì§€ë§‰</a>
 
 </c:if>
 
@@ -64,27 +80,27 @@
 		<th>
 			<c:choose>
 				<c:when test="${c.orderParam.field == 'email' && c.orderParam.direction == 'asc'}">
-					<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&s_name=${c.searchParam.name}&s_email=${c.searchParam.email}&o_field=email&o_direction=desc">ÀÌ¸ŞÀÏV</a>
+					<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&${c.searchParam}&o_field=email&o_direction=desc">ì´ë©”ì¼V</a>
 				</c:when>
 				<c:otherwise>
-					<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&s_name=${c.searchParam.name}&s_email=${c.searchParam.email}&o_field=email&o_direction=asc">ÀÌ¸ŞÀÏ^</a>
+					<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&${c.searchParam}&o_field=email&o_direction=asc">ì´ë©”ì¼^</a>
 				</c:otherwise>
 			</c:choose>
 		</th>
 		<th>
 			<c:choose>
 				<c:when test="${c.orderParam.field == 'name' && c.orderParam.direction == 'asc'}">
-					<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&s_name=${c.searchParam.name}&s_email=${c.searchParam.email}&o_field=name&o_direction=desc">ÀÌ¸§V</a>
+					<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&${c.searchParam}&o_field=name&o_direction=desc">ì´ë¦„V</a>
 				</c:when>
 				<c:otherwise>
-					<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&s_name=${c.searchParam.name}&s_email=${c.searchParam.email}&o_field=name&o_direction=asc">ÀÌ¸§^</a>
+					<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&${c.searchParam}&o_field=name&o_direction=asc">ì´ë¦„^</a>
 				</c:otherwise>
 			</c:choose>
 		</th>
 	</tr>
 <c:forEach var="member" items="${memberList}">
 	<tr>
-		<td><a href="/member/${member.id}.do?p_size=${c.pageParam.size}&p_page=${c.pageParam.page}&s_name=${c.searchParam.name}&s_email=${c.searchParam.email}&o_field=${c.orderParam.field}&o_direction=${c.orderParam.direction}">${member.email}</a></td>
+		<td><a href="/member/${member.id}.do?${c.allParam}">${member.email}</a></td>
 		<td>${member.name}</td>
 	</tr>
 </c:forEach>

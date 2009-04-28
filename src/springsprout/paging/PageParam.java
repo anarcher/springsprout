@@ -1,5 +1,7 @@
 package springsprout.paging;
 
+import springsprout.web.URLBuilder;
+
 public class PageParam {
 
 	public static final int DEFAULT_SIZE = 5;
@@ -45,11 +47,17 @@ public class PageParam {
 	}
 
 	public int getBeginPage(){
+		if(page%10 == 0)
+			return page - 9;
+
 		return page/10 * 10 + 1;
 	}
 
 	public int getEndPage() {
-		int endPage = page/10 * 10 + 9;
+		if(page%10 == 0)
+			return page;
+
+		int endPage = 10 * (page/10 + 1);
 		if(getTotalPage() < endPage)
 			return getTotalPage();
 		else
@@ -61,6 +69,18 @@ public class PageParam {
 		if(totalRowsCount%size != 0)
 			totalPage += 1;
 		return totalPage;
+	}
+
+	@Override
+	public String toString() {
+		URLBuilder builder = new URLBuilder();
+		builder.addParameter("p_page", page, "");
+		builder.addParameter("p_size", size, "");
+		return builder.toString();
+	}
+
+	public int[] getPageSizes(){
+		return new int[]{5, 10, 20, 50, 100};
 	}
 
 }
