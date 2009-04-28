@@ -8,7 +8,7 @@ public class URLBuilder {
 		builder = new StringBuilder();
 	}
 
-	public void addParameter(String parameterName, Integer value, String defaultValue) {
+	public void addParameter(String parameterName, String value, String defaultValue) {
 		StringBuilder localBuilder = makeForehead(parameterName);
 
 		if(value != null)
@@ -35,6 +35,10 @@ public class URLBuilder {
 	@Override
 	public String toString() {
 		return builder.toString();
+	}
+
+	public void addParameter(String parameterName, int value, String defaultValue) {
+		addParameter(parameterName, value+"", defaultValue);
 	}
 
 }

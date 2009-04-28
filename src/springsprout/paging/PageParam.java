@@ -1,5 +1,7 @@
 package springsprout.paging;
 
+import springsprout.web.URLBuilder;
+
 public class PageParam {
 
 	public static final int DEFAULT_SIZE = 5;
@@ -71,17 +73,10 @@ public class PageParam {
 
 	@Override
 	public String toString() {
-		String result = "";
-
-		result += "p_page=";
-		if (page > 0)
-			result += page;
-
-		result += "&p_size=";
-		if (size > 0)
-			result += size;
-
-		return result;
+		URLBuilder builder = new URLBuilder();
+		builder.addParameter("p_page", page, "");
+		builder.addParameter("p_size", size, "");
+		return builder.toString();
 	}
 
 }

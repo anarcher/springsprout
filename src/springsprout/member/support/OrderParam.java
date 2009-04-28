@@ -1,5 +1,7 @@
 package springsprout.member.support;
 
+import springsprout.web.URLBuilder;
+
 public class OrderParam {
 
 	private String field;
@@ -24,17 +26,10 @@ public class OrderParam {
 
 	@Override
 	public String toString() {
-		String result = "";
-
-		result += "o_field=";
-		if (field != null)
-			result += field;
-
-		result += "&o_direction=";
-		if (direction != null)
-			result += direction;
-
-		return result;
+		URLBuilder builder = new URLBuilder();
+		builder.addParameter("o_field", field, "");
+		builder.addParameter("o_direction", direction, "");
+		return builder.toString();
 	}
 
 }
