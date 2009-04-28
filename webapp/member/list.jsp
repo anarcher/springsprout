@@ -1,37 +1,37 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>SpringSprout</title>
 </head>
 
 <body>
 <div>
-<a href="/member/add.do">È¸¿ø Ãß°¡</a>
+<a href="/member/add.do">íšŒì› ì¶”ê°€</a>
 
 <form method="get" action="/member/list.do">
-	ÀÌ¸§: <input type="text" name="s_name" value="${c.searchParam.name}" />
-	ÀÌ¸ŞÀÏ: <input type="text" name="s_email" value="${c.searchParam.email}" />
-	<input type="submit" value="°Ë»ö" />
+	ì´ë¦„: <input type="text" name="s_name" value="${c.searchParam.name}" />
+	ì´ë©”ì¼: <input type="text" name="s_email" value="${c.searchParam.email}" />
+	<input type="submit" value="ê²€ìƒ‰" />
 </form>
 </div>
 
 <div>
 <c:if test="${empty memberList}">
-È¸¿ø ¸ñ·ÏÀÌ ¾ø½À´Ï´Ù.
+íšŒì› ëª©ë¡ì´ ì—†ìŠµë‹ˆë‹¤.
 </c:if>
 
 <c:if test="${! empty memberList}">
 
-ÆäÀÌÁö »çÀÌÁî: ${c.pageParam.size}<br/>
-ÇöÀç ÆäÀÌÁö: ${c.pageParam.page}<br/>
-ÃÑ ÆäÀÌÁö: ${c.pageParam.totalPage}<br/>
-ÃÑ °¹¼ö: ${c.pageParam.totalRowsCount}<br/>
-ÇöÀç ÆäÀÌÁö Ã¹ ¹øÂ° ¸ñ·Ï ÀÎµ¦½º: ${c.pageParam.firstRowNumber}<br/>
+í˜ì´ì§€ ì‚¬ì´ì¦ˆ: ${c.pageParam.size}<br/>
+í˜„ì¬ í˜ì´ì§€: ${c.pageParam.page}<br/>
+ì´ í˜ì´ì§€: ${c.pageParam.totalPage}<br/>
+ì´ ê°¯ìˆ˜: ${c.pageParam.totalRowsCount}<br/>
+í˜„ì¬ í˜ì´ì§€ ì²« ë²ˆì§¸ ëª©ë¡ ì¸ë±ìŠ¤: ${c.pageParam.firstRowNumber}<br/>
 
 <form method="get" action="/member/list.do?p_page=${c.pageParam.page}&${c.searchParam}&${c.orderParam}">
 	<select name="p_size">
@@ -46,14 +46,14 @@
 			</c:choose>
 		</c:forEach>
 	</select>
-	<input type="submit" value="ÆäÀÌÂ¡" />
+	<input type="submit" value="í˜ì´ì§•" />
 </form>
 <c:if test="${c.pageParam.totalRowsCount > c.pageParam.size}">
 
-	<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&${c.searchParam}&${c.orderParam}">Ã³À½</a> |
+	<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&${c.searchParam}&${c.orderParam}">ì²˜ìŒ</a> |
 
 	<c:if test="${c.pageParam.beginPage - 10 > 0}">
-		<a href="/member/list.do?p_page=${c.pageParam.beginPage - 10}&p_size=${c.pageParam.size}&${c.searchParam}&${c.orderParam}">ÀÌÀü</a> |
+		<a href="/member/list.do?p_page=${c.pageParam.beginPage - 10}&p_size=${c.pageParam.size}&${c.searchParam}&${c.orderParam}">ì´ì „</a> |
 	</c:if>
 
 	<c:forEach begin="${c.pageParam.beginPage}" end="${c.pageParam.endPage}" var="current" >
@@ -68,10 +68,10 @@
 	</c:forEach>
 
 	<c:if test="${c.pageParam.beginPage + 10 < c.pageParam.totalPage}">
-		<a href="/member/list.do?p_page=${c.pageParam.endPage + 1}&p_size=${c.pageParam.size}&${c.searchParam}&${c.orderParam}">´ÙÀ½</a> |
+		<a href="/member/list.do?p_page=${c.pageParam.endPage + 1}&p_size=${c.pageParam.size}&${c.searchParam}&${c.orderParam}">ë‹¤ìŒ</a> |
 	</c:if>
 
-	<a href="/member/list.do?p_page=${c.pageParam.totalPage}&p_size=${c.pageParam.size}&${c.searchParam}&${c.orderParam}">¸¶Áö¸·</a>
+	<a href="/member/list.do?p_page=${c.pageParam.totalPage}&p_size=${c.pageParam.size}&${c.searchParam}&${c.orderParam}">ë§ˆì§€ë§‰</a>
 
 </c:if>
 
@@ -80,20 +80,20 @@
 		<th>
 			<c:choose>
 				<c:when test="${c.orderParam.field == 'email' && c.orderParam.direction == 'asc'}">
-					<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&${c.searchParam}&o_field=email&o_direction=desc">ÀÌ¸ŞÀÏV</a>
+					<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&${c.searchParam}&o_field=email&o_direction=desc">ì´ë©”ì¼V</a>
 				</c:when>
 				<c:otherwise>
-					<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&${c.searchParam}&o_field=email&o_direction=asc">ÀÌ¸ŞÀÏ^</a>
+					<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&${c.searchParam}&o_field=email&o_direction=asc">ì´ë©”ì¼^</a>
 				</c:otherwise>
 			</c:choose>
 		</th>
 		<th>
 			<c:choose>
 				<c:when test="${c.orderParam.field == 'name' && c.orderParam.direction == 'asc'}">
-					<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&${c.searchParam}&o_field=name&o_direction=desc">ÀÌ¸§V</a>
+					<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&${c.searchParam}&o_field=name&o_direction=desc">ì´ë¦„V</a>
 				</c:when>
 				<c:otherwise>
-					<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&${c.searchParam}&o_field=name&o_direction=asc">ÀÌ¸§^</a>
+					<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&${c.searchParam}&o_field=name&o_direction=asc">ì´ë¦„^</a>
 				</c:otherwise>
 			</c:choose>
 		</th>

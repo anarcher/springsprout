@@ -1,23 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>SpringSprout</title>
 </head>
 
 <body>
 <div>
-<a href="/member/list.do?${c.allParam}">¸ñ·ÏÀ¸·Î</a> |
-<a href="/member/update/${member.id}.do?${c.allParam}">¼öÁ¤</a> |
-<a href="/member/delete/${member.id}.do?${c.allParam}">»èÁ¦</a>
+<a href="/member/list.do?${c.allParam}">ëª©ë¡ìœ¼ë¡œ</a> |
+<a href="/member/update/${member.id}.do?${c.allParam}">ìˆ˜ì •</a> |
+<a href="/member/delete/${member.id}.do?${c.allParam}">ì‚­ì œ</a>
 </div>
 
 <div>
-ÀÌ¸§: ${member.name}
-ÀÌ¸ŞÀÏ: ${member.email}
+ì´ë¦„: ${member.name}
+ì´ë©”ì¼: ${member.email}
 </div>
 </body>
 
