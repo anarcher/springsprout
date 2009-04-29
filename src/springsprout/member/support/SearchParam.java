@@ -1,5 +1,6 @@
 package springsprout.member.support;
 
+import springsprout.common.System;
 import springsprout.web.URLBuilder;
 
 public class SearchParam {
@@ -26,7 +27,7 @@ public class SearchParam {
 
 	@Override
 	public String toString() {
-		URLBuilder builder = new URLBuilder();
+		URLBuilder builder = new URLBuilder(System.ENCODING);
 		builder.addParameter("s_name", name, "");
 		builder.addParameter("s_email", email, "");
 		return builder.toString();

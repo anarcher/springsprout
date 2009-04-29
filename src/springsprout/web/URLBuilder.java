@@ -1,11 +1,25 @@
 package springsprout.web;
 
+import java.io.UnsupportedEncodingException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
 public class URLBuilder {
 
 	private StringBuilder builder;
+	String encoding;
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	public URLBuilder() {
+		this(new java.io.OutputStreamWriter(System.out).getEncoding());
+	}
+
+	public URLBuilder(String encoding) {
+
 		builder = new StringBuilder();
+		this.encoding = encoding;
 	}
 
 	public void addParameter(String parameterName, Object value, String defaultValue) {
@@ -17,7 +31,18 @@ public class URLBuilder {
 			localBuilder.append(defaultValue);
 		else
 			return;
-		builder.append(localBuilder.toString());
+		builder.append(encoding(localBuilder.toString()));
+	}
+
+	private String encoding(String string)  {
+		String result;
+		try {
+			result = new String(string.getBytes(), encoding);
+		} catch (UnsupportedEncodingException e) {
+			logger.debug("[SpringSprout]encoding field's value is: <" + encoding + ">");
+			throw new EncodingException();
+		}
+		return result;
 	}
 
 	private StringBuilder makeForehead(String parameterName) {
