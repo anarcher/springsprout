@@ -39,7 +39,9 @@ public class URLBuilder {
 		try {
 			return URLEncoder.encode(string, encoding);
 		} catch (UnsupportedEncodingException e) {
-			logger.debug("[SpringSprout]encoding field's value is: <" + encoding + ">");
+			if(logger.isDebugEnabled()){
+				logger.debug("[SpringSprout]encoding field's value is: <" + encoding + ">");
+			}
 			throw new EncodingException();
 		}
 	}
