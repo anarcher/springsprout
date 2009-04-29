@@ -27,7 +27,7 @@ public class URLBuilder {
 		StringBuilder localBuilder = makeForehead(parameterName);
 
 		if(value != null)
-			localBuilder.append(value);
+			localBuilder.append(encode(String.valueOf(value)));
 		else if(defaultValue != null)
 			localBuilder.append(encode(defaultValue));
 		else
