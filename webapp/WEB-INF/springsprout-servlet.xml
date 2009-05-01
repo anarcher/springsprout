@@ -25,9 +25,11 @@
     <!-- ============================================================= -->
     <!--  View Resolver(jstl and tiles)                                -->
     <!-- ============================================================= -->
+    <!--
     <bean id="jspViewResolver"
         class="org.springframework.web.servlet.view.InternalResourceViewResolver"
         p:order="1" p:prefix="/jsp/" p:suffix=".jsp" p:viewClass="org.springframework.web.servlet.view.JstlView" />
+     -->
 
     <bean id="tilesViewResolver"
         class="org.springframework.web.servlet.view.UrlBasedViewResolver"

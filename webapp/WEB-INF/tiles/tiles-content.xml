@@ -3,6 +3,8 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
+
+    <!-- main page  -->
     <definition name="index" extends=".root">
         <put-attribute name="content" value="/jsp/index.jsp" />
     </definition>
@@ -10,4 +12,23 @@
     <definition name="login" extends=".root">
         <put-attribute name="content" value="/jsp/login/login.jsp" />
     </definition>
+
+    <!-- member page  -->
+    <definition name="member/list" extends=".empty">
+        <put-attribute name="content" value="/jsp/member/list.jsp" />
+    </definition>
+
+    <definition name="member/add" extends=".empty">
+        <put-attribute name="content" value="/jsp/member/add.jsp" />
+    </definition>
+
+    <definition name="member/view" extends=".empty">
+        <put-attribute name="content" value="/jsp/member/view.jsp" />
+    </definition>
+
+    <definition name="member/update" extends=".empty">
+        <put-attribute name="content" value="/jsp/member/update.jsp" />
+    </definition>
+
+
 </tiles-definitions>
