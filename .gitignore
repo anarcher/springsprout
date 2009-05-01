@@ -8,3 +8,4 @@ webapp/WEB-INF/lib/*
 *.log
 .svn
 .svn/*
+.springBeans
