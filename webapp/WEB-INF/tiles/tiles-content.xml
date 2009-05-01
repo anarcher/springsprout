@@ -14,7 +14,7 @@
     </definition>
 
     <!-- member page  -->
-    <definition name="member/list" extends=".empty">
+    <definition name="member/list" extends=".root">
         <put-attribute name="content" value="/jsp/member/list.jsp" />
     </definition>
 

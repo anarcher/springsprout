@@ -1,7 +1,7 @@
 <div id="header" class="basic">
     <div class="site">
          <div class="logo">
-             <a href="/"><img src="images/logo.png" alt="springsprout" /></a>
+             <a href="/"><img src="/images/logo.png" alt="springsprout" /></a>
          </div>
          <div class="actions">
              <a href="/">Home</a>
