@@ -34,8 +34,8 @@ public class URLBuilderTest {
 		builder = new URLBuilder("UTF-8");
 		assertEquals("UTF-8", builder.encoding);
 
-		builder.addParameter("test", null, "");
-		String expectedURL = "test=";
+		builder.addParameter("test", "= #", "");
+		String expectedURL = "test=%3D+%23";
 		assertEquals(new String(expectedURL.getBytes(), "UTF-8"), builder.toString());
 	}
 
