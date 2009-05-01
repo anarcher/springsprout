@@ -27,11 +27,11 @@
     <!-- ============================================================= -->
     <bean id="jspViewResolver"
         class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-        p:prefix="/jsp" p:suffix=".jsp" p:viewClass="org.springframework.web.servlet.view.JstlView" />
+        p:order="1" p:prefix="/jsp/" p:suffix=".jsp" p:viewClass="org.springframework.web.servlet.view.JstlView" />
 
     <bean id="tilesViewResolver"
         class="org.springframework.web.servlet.view.UrlBasedViewResolver"
-        p:order="1" p:viewClass="org.springframework.web.servlet.view.tiles2.TilesView" />
+        p:viewClass="org.springframework.web.servlet.view.tiles2.TilesView" />
 
     <!-- ============================================================= -->
     <!--  Tiles                                                        -->
