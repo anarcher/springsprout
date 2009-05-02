@@ -25,4 +25,18 @@ public class URLBuilderTest {
 		assertEquals("p_page=1&p_size=5&o_direction=asc", builder.toString());
 	}
 
+	@Test
+	public void encoding() throws Exception {
+		URLBuilder builder = new URLBuilder();
+		String enc = new java.io.OutputStreamWriter(System.out).getEncoding();
+		assertEquals(enc, builder.encoding);
+
+		builder = new URLBuilder("UTF-8");
+		assertEquals("UTF-8", builder.encoding);
+
+		builder.addParameter("test", "= #", "");
+		String expectedURL = "test=%3D+%23";
+		assertEquals(new String(expectedURL.getBytes(), "UTF-8"), builder.toString());
+	}
+
 }

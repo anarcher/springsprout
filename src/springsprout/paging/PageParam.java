@@ -1,5 +1,6 @@
 package springsprout.paging;
 
+import springsprout.common.System;
 import springsprout.web.URLBuilder;
 
 public class PageParam {
@@ -73,7 +74,7 @@ public class PageParam {
 
 	@Override
 	public String toString() {
-		URLBuilder builder = new URLBuilder();
+		URLBuilder builder = new URLBuilder(System.ENCODING);
 		builder.addParameter("p_page", page, "");
 		builder.addParameter("p_size", size, "");
 		return builder.toString();

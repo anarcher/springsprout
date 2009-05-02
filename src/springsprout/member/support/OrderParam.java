@@ -1,5 +1,6 @@
 package springsprout.member.support;
 
+import springsprout.common.System;
 import springsprout.web.URLBuilder;
 
 public class OrderParam {
@@ -26,7 +27,7 @@ public class OrderParam {
 
 	@Override
 	public String toString() {
-		URLBuilder builder = new URLBuilder();
+		URLBuilder builder = new URLBuilder(System.ENCODING);
 		builder.addParameter("o_field", field, "");
 		builder.addParameter("o_direction", direction, "");
 		return builder.toString();

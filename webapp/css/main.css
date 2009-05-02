@@ -1,0 +1,52 @@
+@CHARSET "UTF-8";
+/*
+    common!!
+*/
+html,body{height:100%;}
+*{margin:0;padding:0;}
+body{background-color:white;font:13.34px helvetica,arial,clean,sans-serif;*font-size:small;text-align:center;}
+body *{line-height:1.4em;}
+img{border:0;}
+a{color:#4183c4;text-decoration:none;}
+a.action{color:#d00;text-decoration:underline;}
+a.action span{text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+.site{width:69em;margin:0 auto;padding:0 3em;text-align:left;}
+.right{float:right;}
+.left{float:left;}
+.hidden{display:none;}
+
+.standard_form{margin:3em auto 0 auto;width:60em;background-color:#e9fcd9;padding:2em 2em 1em 2em;border:20px solid #a4db42;}
+.standard_form h1{font-size:160%;margin-bottom:1em;}
+.standard_form h1 a{font-size:70%;font-weight:normal;}
+.standard_form p{margin:.5em 0;}
+.standard_form p.note{color:#a00;}
+.standard_form form label,.standard_form form .label,label.standard{font-size:110%;color:#666;display:block;margin:0;margin-top:1em;}
+.standard_form form label a{font-size:90%;}
+.standard_form form label.error{color:#a00;}
+.standard_form form .label label{margin:0;color:black;font-size:95%;}
+.standard_form form .label span{font-size:90%;color:#888;}
+.standard_form form input.text,.standard_form form textarea{padding:5px;border:1px solid #888;}
+.standard_form form input.text{font-size:110%;}
+.standard_form form input.submit{font-size:120%;padding:.1em 1em;}
+.standard_form form label.error input.text,.standard_form form label.error textarea{border:1px solid #a00;background-color:#f2e1e1;}
+
+/*
+    header
+*/
+#header a{color:#fff;}
+#header a:hover{text-decoration:none;}
+#header{background:#fcfcfc url(/images/header_bg.png) 0 100% repeat-x;height:6.82em;min-width:75em;}
+#header .logo{padding-top:1.2em;float:left;}
+#header .actions{float:right;color:#444;font-size:110%;margin-top:2.3em;}
+#header .actions a{color:#444;margin-left:1.5em;padding:.4em;}
+#header .actions a:hover{text-decoration:none;background-color:#dcdcdc;}
+#header.basic{border-bottom:5px solid #a4db42;margin-bottom:1em;}
+
+#home .announce{min-width:75em;margin-top:-1em;background-color:#fbfbfb;}
+#home .announce h1{font-family:"HelveticaNeue-Light",Helvetica,Arial,sans-serif;font-size:240%;text-align:center;font-weight:normal;color:#133855;padding:.75em 0;}
+#home .features{border-top:5px solid #a4db42;background-color:#e9fcd9;overflow:hidden;padding:1em 2em 3em 2em;}
+
+#login{width:31em;}
+#forgot_password{width:31em;}

@@ -56,6 +56,7 @@ public class MemberController {
 	@RequestMapping("/member/list")
 	public ModelMap list(HttpServletRequest request,
 			HttpServletResponse response) throws ServletRequestBindingException {
+		System.out.println("url: "+ request.getQueryString());
 		context.bindParams(request);
 		ModelMap modelMap = new ModelMap();
 		modelMap.addAttribute(service.getMemberListByContext(context));
