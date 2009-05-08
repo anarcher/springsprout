@@ -1,4 +1,4 @@
-package db;
+package springsprout.test;
 
 import java.io.File;
 import java.io.RandomAccessFile;

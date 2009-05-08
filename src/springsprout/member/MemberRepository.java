@@ -28,13 +28,22 @@ public class MemberRepository {
 		return sessionFactory.getCurrentSession();
 	}
 
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+
 	public void add(Member member) {
 		getCurrentSession().save(member);
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<Member> getMemberList() {
-		return getCurrentSession().createQuery("from Member order by name").list();
+		return getCurrentSession().createQuery("from Member order by name")
+				.list();
 	}
 
 	public Member getMemberById(int id) {
@@ -51,10 +60,12 @@ public class MemberRepository {
 
 	private void applySearchParam(SearchParam searchParam, Criteria c) {
 		if (StringUtils.hasText(searchParam.getName())) {
-			c.add(Restrictions.ilike("name", searchParam.getName(), MatchMode.ANYWHERE));
+			c.add(Restrictions.ilike("name", searchParam.getName(),
+					MatchMode.ANYWHERE));
 		}
 		if (StringUtils.hasText(searchParam.getEmail())) {
-			c.add(Restrictions.ilike("email", searchParam.getEmail(), MatchMode.ANYWHERE));
+			c.add(Restrictions.ilike("email", searchParam.getEmail(),
+					MatchMode.ANYWHERE));
 		}
 	}
 
@@ -68,9 +79,9 @@ public class MemberRepository {
 
 	private void applyOrderParam(OrderParam orderParam, Criteria c) {
 		String field = orderParam.getField();
-		if(!StringUtils.hasText(field))
-			c.addOrder(Order.asc("id")); //apply default
-		else if(orderParam.getDirection().equals("desc"))
+		if (!StringUtils.hasText(field))
+			c.addOrder(Order.asc("id")); // apply default
+		else if (orderParam.getDirection().equals("desc"))
 			c.addOrder(Order.desc(field));
 		else
 			c.addOrder(Order.asc(field));
@@ -90,6 +101,14 @@ public class MemberRepository {
 		applyOrderParam(context.getOrderParam(), c);
 
 		return c.list();
+	}
+
+	public void flush() {
+		getCurrentSession().flush();
+	}
+
+	public void deleteAll() {
+		getCurrentSession().createSQLQuery("delete * from Member");
 	}
 
 }

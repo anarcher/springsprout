@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>whiteboard2</groupId>
+	<groupId>springsprout</groupId>
 	<artifactId>springsprout</artifactId>
 	<packaging>war</packaging>
 	<name>keesun</name>
@@ -100,6 +100,16 @@
 			<artifactId>derby</artifactId>
 			<version>10.3.2.1</version>
 		</dependency>
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>8.2-507.jdbc3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>com.springsource.org.hsqldb</artifactId>
+			<version>1.8.0.9</version>
+		</dependency>
 		<!-- test -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -107,10 +117,71 @@
 			<version>4.6</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.dbunit</groupId>
+			<artifactId>dbunit</artifactId>
+			<version>2.4.4</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openqa.selenium.webdriver</groupId>
+			<artifactId>webdriver-support</artifactId>
+			<version>0.6.964</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openqa.selenium.webdriver</groupId>
+			<artifactId>webdriver-htmlunit</artifactId>
+			<version>0.6.964</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openqa.selenium.webdriver</groupId>
+			<artifactId>webdriver-firefox</artifactId>
+			<version>0.6.964</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openqa.selenium.webdriver</groupId>
+			<artifactId>webdriver-ie</artifactId>
+			<version>0.6.964</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openqa.selenium.webdriver</groupId>
+			<artifactId>webdriver-safari</artifactId>
+			<version>0.6.964</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- cargo -->
+		<dependency>
+			<groupId>org.codehaus.cargo</groupId>
+			<artifactId>cargo-core-api-module</artifactId>
+			<version>1.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.cargo</groupId>
+			<artifactId>cargo-core-api-container</artifactId>
+			<version>1.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.cargo</groupId>
+			<artifactId>cargo-core-api-generic</artifactId>
+			<version>1.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.cargo</groupId>
+			<artifactId>cargo-core-container-tomcat</artifactId>
+			<version>1.0</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
-		<finalName>whiteboard2</finalName>
+		<finalName>springsprout</finalName>
 		<sourceDirectory>${project.basedir}/src</sourceDirectory>
 		<scriptSourceDirectory>
             ${project.basedir}/scripts
@@ -173,6 +244,17 @@
 			<id>springbyexample.org</id>
 			<name>Spring by Example</name>
 			<url>http://www.springbyexample.org/maven/repo</url>
+		</repository>
+		<repository>
+			<id>openqa-releases</id>
+			<name>OpenQA Releases</name>
+			<url>http://nexus.openqa.org/content/repositories/releases</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
 		</repository>
 	</repositories>
 
