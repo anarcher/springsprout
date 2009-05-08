@@ -44,9 +44,12 @@ a:hover{text-decoration:underline;}
 #header .actions a:hover{text-decoration:none;background-color:#dcdcdc;}
 #header.basic{border-bottom:5px solid #a4db42;margin-bottom:1em;}
 
-#home .announce{min-width:75em;margin-top:-1em;background-color:#fbfbfb;}
+#home .announce{min-width:75em;margin-top:-1em;background-color:#FBFBFB;}
 #home .announce h1{font-family:"HelveticaNeue-Light",Helvetica,Arial,sans-serif;font-size:240%;text-align:center;font-weight:normal;color:#133855;padding:.75em 0;}
-#home .features{border-top:5px solid #a4db42;background-color:#e9fcd9;overflow:hidden;padding:1em 2em 3em 2em;}
+#home .features{border-top:5px solid #a4db42;background-color:#f8fcf3;overflow:hidden;padding:1em 2em 3em 2em;}
+#home .notice{border-top:5px solid #a4db42;background-color:#FBFBFB;overflow:hidden;padding:1em 2em 3em 2em;}
+#home .media{border-top:5px solid #a4db42;background-color:#f8fcf3;overflow:hidden;padding:1em 2em 3em 2em;}
+#home .join{border-top:5px solid #a4db42;background-color:#FBFBFB;overflow:hidden;padding:1em 2em 3em 2em;}
 
 #login{width:31em;}
 #forgot_password{width:31em;}

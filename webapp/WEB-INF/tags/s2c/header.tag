@@ -10,7 +10,7 @@
              <a href="/">Blog</a>
              <a href="/">Wiki</a>
              <a href="/">Signup</a>
-             <a href="/login/login.do">Login</a>
+             <a href="/login.do">Login</a>
          </div>
     </div>
 </div>

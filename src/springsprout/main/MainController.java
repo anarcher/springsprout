@@ -12,7 +12,7 @@ public class MainController {
     }
 
     // login
-    @RequestMapping("/login/login")
+    @RequestMapping("/login")
     public void login(){
     }
 
