@@ -25,36 +25,8 @@
     <!-- ============================================================= -->
     <!--  View Resolver(jstl and tiles)                                -->
     <!-- ============================================================= -->
-    <!--
-    <bean id="jspViewResolver"
+    <bean id="viewResolver"
         class="org.springframework.web.servlet.view.InternalResourceViewResolver"
         p:order="1" p:prefix="/jsp/" p:suffix=".jsp" p:viewClass="org.springframework.web.servlet.view.JstlView" />
-
-    <bean id="tilesViewResolver"
-        class="org.springframework.web.servlet.view.UrlBasedViewResolver"
-        p:viewClass="org.springframework.web.servlet.view.tiles2.TilesView" />
-     -->
-
-    <bean id="tilesViewResolver" class="org.springbyexample.web.servlet.view.tiles2.TilesUrlBasedViewResolver"
-        p:viewClass="org.springbyexample.web.servlet.view.tiles2.DynamicTilesView"
-        p:prefix="/jsp/"
-        p:suffix=".jsp"
-        p:tilesDefinitionName="root"
-        p:tilesBodyAttributeName="content"
-        p:tilesDefinitionDelimiter="." />
-
-    <!-- ============================================================= -->
-    <!--  Tiles                                                        -->
-    <!-- ============================================================= -->
-    <bean id="tilesConfigurer" class="springsprout.web.SpringTilesConfigurer">
-        <property name="definitions">
-            <list>
-                <value>/WEB-INF/tiles/general-layout.xml</value>
-                <!--
-                <value>/WEB-INF/tiles/tiles-content.xml</value>
-                -->
-            </list>
-        </property>
-    </bean>
 
 </beans>

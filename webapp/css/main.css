@@ -50,3 +50,16 @@ a:hover{text-decoration:underline;}
 
 #login{width:31em;}
 #forgot_password{width:31em;}
+
+/*
+	footer
+*/
+#footer{height:8.6em;background:#bbccd9 url(/images/bg.png) 0 0 repeat-x;overflow:hidden;color:#cadcea;min-width:75em;}
+#footer a{color:white;text-decoration:underline;}
+#footer .info{padding:2.9em 0 3.3em 0;float:left;}
+#footer .info .links{padding-bottom:.4em;border-bottom:3px solid #5c8ab3;}
+#footer .info .company{padding-top:.4em;}
+#footer .sponsor{padding:2.75em 0 1em 0;float:right;width:15em;}
+#footer .sponsor img{float:right;margin-left:.75em;}
+#footer .sponsor a{text-decoration:none;}
+#footer .sponsor div{text-align:right;font-size:.9em;margin-top:.7em;}
