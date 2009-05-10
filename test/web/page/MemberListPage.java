@@ -1,6 +1,5 @@
 package web.page;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class MemberListPage {
@@ -11,9 +10,8 @@ public class MemberListPage {
 		this.driver = driver;
 	}
 
-	public MemberViewPage clickLink(int id){
-		driver.findElement(By.linkText("keesun@whiteship.me")).click();
+	public MemberViewPage veiwMember(int id) {
+		driver.navigate().to("http://localhost:8080/springsprout/member/" + id);
 		return new MemberViewPage(driver);
 	}
-
 }
