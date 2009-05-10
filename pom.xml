@@ -12,6 +12,8 @@
 		<java.version>1.5</java.version>
 		<spring.version>3.0.0.M2</spring.version>
 		<aspectj.version>1.6.3.RELEASE</aspectj.version>
+		<cargo.version>1.0</cargo.version>
+		<webdriver.version>0.6.964</webdriver.version>
 	</properties>
 
 	<dependencies>
@@ -197,59 +199,60 @@
 			<version>2.4.4</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- webdriver -->
 		<dependency>
 			<groupId>org.openqa.selenium.webdriver</groupId>
 			<artifactId>webdriver-support</artifactId>
-			<version>0.6.964</version>
+			<version>${webdriver.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.openqa.selenium.webdriver</groupId>
 			<artifactId>webdriver-htmlunit</artifactId>
-			<version>0.6.964</version>
+			<version>${webdriver.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.openqa.selenium.webdriver</groupId>
 			<artifactId>webdriver-firefox</artifactId>
-			<version>0.6.964</version>
+			<version>${webdriver.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.openqa.selenium.webdriver</groupId>
 			<artifactId>webdriver-ie</artifactId>
-			<version>0.6.964</version>
+			<version>${webdriver.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.openqa.selenium.webdriver</groupId>
 			<artifactId>webdriver-safari</artifactId>
-			<version>0.6.964</version>
+			<version>${webdriver.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- cargo -->
 		<dependency>
 			<groupId>org.codehaus.cargo</groupId>
 			<artifactId>cargo-core-api-module</artifactId>
-			<version>1.0</version>
+			<version>${cargo.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.cargo</groupId>
 			<artifactId>cargo-core-api-container</artifactId>
-			<version>1.0</version>
+			<version>${cargo.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.cargo</groupId>
 			<artifactId>cargo-core-api-generic</artifactId>
-			<version>1.0</version>
+			<version>${cargo.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.cargo</groupId>
 			<artifactId>cargo-core-container-tomcat</artifactId>
-			<version>1.0</version>
+			<version>${cargo.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -294,13 +297,22 @@
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.cargo</groupId>
+				<artifactId>cargo-maven2-plugin</artifactId>
+				<configuration>
+					<container>
+						<containerId>tomcat6x</containerId>
+						<home>/apps/apache-tomcat-6.0.18</home>
+					</container>
 				</configuration>
 			</plugin>
 		</plugins>

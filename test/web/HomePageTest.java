@@ -8,6 +8,7 @@ import org.codehaus.cargo.container.deployable.Deployable;
 import org.codehaus.cargo.container.deployable.WAR;
 import org.codehaus.cargo.container.tomcat.Tomcat6xInstalledLocalContainer;
 import org.codehaus.cargo.container.tomcat.Tomcat6xStandaloneLocalConfiguration;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -19,6 +20,7 @@ public class HomePageTest {
 	InstalledLocalContainer container;
 
 	@Test
+	@Ignore
 	public void loginLink() throws Exception {
 		Deployable war = new WAR("target/springsprout.war");
 		LocalConfiguration configuration = new Tomcat6xStandaloneLocalConfiguration("target/springsprout");
