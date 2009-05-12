@@ -11,6 +11,8 @@ a{color:#4183c4;text-decoration:none;}
 a.action{color:#d00;text-decoration:underline;}
 a.action span{text-decoration:none;}
 a:hover{text-decoration:underline;}
+#main{min-height:100%;height:auto!important;height:100%;margin:0 auto -8.6em;}
+.push{height:8.6em;padding-bottom:4em;}
 
 .site{width:69em;margin:0 auto;padding:0 3em;text-align:left;}
 .right{float:right;}

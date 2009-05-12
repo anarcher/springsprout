@@ -1,5 +1,3 @@
 <body>
-	<div>
-		<jsp:doBody />
-	</div>
+    <jsp:doBody />
 </body>
