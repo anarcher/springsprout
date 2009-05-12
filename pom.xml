@@ -311,12 +311,12 @@
 				<artifactId>cargo-maven2-plugin</artifactId>
 				<version>1.0.1-SNAPSHOT</version>
 				<configuration>
-					<!-- <wait>false</wait> -->
+					<wait>true</wait>
 					<container>
 						<containerId>tomcat6x</containerId>
+						<type>installed</type>
 						<home>/apps/apache-tomcat-6.0.18</home>
 					</container>
-
 					<deployer>
 						<type>installed</type>
 						<deployables>
@@ -328,6 +328,45 @@
 						</deployables>
 					</deployer>
 				</configuration>
+				<executions>
+					<execution>
+						<id>start-container</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>deployer-deploy</goal>
+							<!--
+								Only local containers can be started <goal>start</goal>
+							-->
+						</goals>
+					</execution>
+					<execution>
+						<id>stop-container</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>deployer-undeploy</goal>
+							<!--
+								Only local containers can be started <goal>stop</goal>
+							-->
+						</goals>
+					</execution>
+					<execution>
+						<id>verify-deploy</id>
+						<phase>install</phase>
+						<goals>
+							<goal>deployer-deploy</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>clean-undeploy</id>
+						<phase>pre-clean</phase>
+						<goals>
+							<goal>deployer-undeploy</goal>
+							<!--
+								Only local containers can be started <goal>stop</goal>
+							-->
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
