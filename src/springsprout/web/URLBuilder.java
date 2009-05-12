@@ -6,6 +6,8 @@ import java.net.URLEncoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import springsprout.web.exception.EncodingException;
+
 
 public class URLBuilder {
 
