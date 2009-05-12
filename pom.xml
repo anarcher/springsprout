@@ -14,6 +14,7 @@
 		<aspectj.version>1.6.3.RELEASE</aspectj.version>
 		<cargo.version>1.0</cargo.version>
 		<webdriver.version>0.6.964</webdriver.version>
+		<asm.version>2.2.3</asm.version>
 	</properties>
 
 	<dependencies>
@@ -87,12 +88,12 @@
 		<dependency>
 			<groupId>org.objectweb.asm</groupId>
 			<artifactId>com.springsource.org.objectweb.asm</artifactId>
-			<version>2.2.3</version>
+			<version>${asm.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.objectweb.asm</groupId>
 			<artifactId>com.springsource.org.objectweb.asm.commons</artifactId>
-			<version>2.2.3</version>
+			<version>${asm.version}</version>
 		</dependency>
 		<!--
 			opensprout's spring <dependency>
@@ -308,12 +309,64 @@
 			<plugin>
 				<groupId>org.codehaus.cargo</groupId>
 				<artifactId>cargo-maven2-plugin</artifactId>
+				<version>1.0.1-SNAPSHOT</version>
 				<configuration>
+					<wait>true</wait>
 					<container>
 						<containerId>tomcat6x</containerId>
+						<type>installed</type>
 						<home>/apps/apache-tomcat-6.0.18</home>
 					</container>
+					<deployer>
+						<type>installed</type>
+						<deployables>
+							<deployable>
+								<groupId>kr.pe.s2c</groupId>
+								<artifactId>springsprout</artifactId>
+								<type>war</type>
+							</deployable>
+						</deployables>
+					</deployer>
 				</configuration>
+				<executions>
+					<execution>
+						<id>start-container</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>deployer-deploy</goal>
+							<!--
+								Only local containers can be started <goal>start</goal>
+							-->
+						</goals>
+					</execution>
+					<execution>
+						<id>stop-container</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>deployer-undeploy</goal>
+							<!--
+								Only local containers can be started <goal>stop</goal>
+							-->
+						</goals>
+					</execution>
+					<execution>
+						<id>verify-deploy</id>
+						<phase>install</phase>
+						<goals>
+							<goal>deployer-deploy</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>clean-undeploy</id>
+						<phase>pre-clean</phase>
+						<goals>
+							<goal>deployer-undeploy</goal>
+							<!--
+								Only local containers can be started <goal>stop</goal>
+							-->
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
@@ -366,5 +419,15 @@
 			<url>http://repository.springsource.com/maven/bundles/milestone</url>
 		</repository>
 	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>codehaus snapshot repository</id>
+			<url>http://snapshots.repository.codehaus.org/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
 
 </project>

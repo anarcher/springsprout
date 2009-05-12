@@ -1,4 +1,4 @@
-package web;
+package web.member;
 
 import static org.junit.Assert.*;
 
