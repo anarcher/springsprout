@@ -16,7 +16,6 @@ import springsprout.test.web.annotation.WebTestConfiguration;
 
 public class WebTestRunner extends BlockJUnit4ClassRunner {
 
-	String testMethodName;
 	private DataManager dataManager;
 	private WarManager warManager;
 
@@ -49,10 +48,7 @@ public class WebTestRunner extends BlockJUnit4ClassRunner {
 
 	@Override
 	protected List<FrameworkMethod> computeTestMethods() {
-		List<FrameworkMethod> annotatedMethods = getTestClass().getAnnotatedMethods(WebTest.class);
-		for(FrameworkMethod method : annotatedMethods)
-			testMethodName += method.getName();
-		return annotatedMethods;
+		return getTestClass().getAnnotatedMethods(WebTest.class);
 	}
 
 
@@ -70,10 +66,6 @@ public class WebTestRunner extends BlockJUnit4ClassRunner {
 
 	public void setWarManager(WarManager warManager) {
 		this.warManager = warManager;
-	}
-
-	public String getTestMethodName() {
-		return testMethodName;
 	}
 
 	@Override
