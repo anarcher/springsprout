@@ -31,6 +31,16 @@ public class WebTestRunnerTest {
 	}
 
 	@Test
+	public void testB(){}
+	@WebTest
+	public void webTestA(){System.out.println("webTestA");}
+	@WebTest
+	public void webTestB(){System.out.println("webTestB");}
+	@WebTest
+	@Ignore
+	public void webTestC(){System.out.println("webTestC");}
+
+	@Test
 	public void findWebTest() throws Exception {
 		runner.computeTestMethods();
 		assertTrue(runner.getTestMethodName().contains("webTestA"));
@@ -59,19 +69,10 @@ public class WebTestRunnerTest {
 		runner.run(mockRN);
 
 		verify(mockWarManager).packaging();
+		verify(mockWarManager, never()).deploy();
+		verify(mockWarManager, never()).undeploy();
+		verifyNoMoreInteractions(mockDataManager);
 	}
 
-	@Test
-	public void testB(){}
-
-	@WebTest
-	public void webTestA(){System.out.println("webTestA");}
-
-	@WebTest
-	public void webTestB(){System.out.println("webTestB");}
-
-	@WebTest
-	@Ignore
-	public void webTestC(){System.out.println("webTestC");}
 
 }
