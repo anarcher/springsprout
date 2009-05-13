@@ -98,7 +98,7 @@ public class WarManager {
 			throw new WarUnDeployingException("WAR UNDEPLOYING ERROR");
 		}
 		if (containAppIn(appList))
-			throw new WarUnDeployingException("WAR NOT UNDEPOLOYED ERROR");
+			throw new WarUnDeployingException("WAR NOT UNDEPLOYED ERROR");
 		logger.debug("WAR UNDEPLOYING OK....");
 	}
 }
