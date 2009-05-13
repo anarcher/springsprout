@@ -1,4 +1,4 @@
-package springsprout.test;
+package springsprout.test.data;
 
 import java.io.File;
 import java.io.RandomAccessFile;

@@ -4,7 +4,7 @@
 */
 html,body{height:100%;}
 *{margin:0;padding:0;}
-body{background-color:white;font:13.34px helvetica,arial,clean,sans-serif;*font-size:small;text-align:center;}
+body{background-color:#FBFBFB;font:13.34px helvetica,arial,clean,sans-serif;*font-size:small;text-align:center;}
 body *{line-height:1.4em;}
 img{border:0;}
 a{color:#4183c4;text-decoration:none;}

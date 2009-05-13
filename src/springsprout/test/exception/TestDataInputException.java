@@ -1,5 +1,9 @@
 package springsprout.test.exception;
 
-public class TestDataInputException extends RuntimeException {
+public class TestDataInputException extends TestException {
+
+	public TestDataInputException(String message) {
+		super(message);
+	}
 
 }
