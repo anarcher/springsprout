@@ -8,7 +8,7 @@ import springsprout.test.web.annotation.WebTestConfiguration;
 
 @RunWith(WebTestRunner.class)
 @WebTestConfiguration(appName = "springsprout", testDataLocation = "/integration/sample/testData.xml")
-public class IndexPageTest {
+public class IndexPageWebTest {
 
 	@WebTest
 	public void sample(){
