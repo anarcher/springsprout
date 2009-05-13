@@ -192,13 +192,11 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.6</version>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.dbunit</groupId>
 			<artifactId>dbunit</artifactId>
 			<version>2.4.4</version>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.mockito</groupId>
@@ -211,56 +209,47 @@
 			<groupId>org.openqa.selenium.webdriver</groupId>
 			<artifactId>webdriver-support</artifactId>
 			<version>${webdriver.version}</version>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.openqa.selenium.webdriver</groupId>
 			<artifactId>webdriver-htmlunit</artifactId>
 			<version>${webdriver.version}</version>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.openqa.selenium.webdriver</groupId>
 			<artifactId>webdriver-firefox</artifactId>
 			<version>${webdriver.version}</version>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.openqa.selenium.webdriver</groupId>
 			<artifactId>webdriver-ie</artifactId>
 			<version>${webdriver.version}</version>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.openqa.selenium.webdriver</groupId>
 			<artifactId>webdriver-safari</artifactId>
 			<version>${webdriver.version}</version>
-			<scope>test</scope>
 		</dependency>
 		<!-- cargo -->
 		<dependency>
 			<groupId>org.codehaus.cargo</groupId>
 			<artifactId>cargo-core-api-module</artifactId>
 			<version>${cargo.version}</version>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.cargo</groupId>
 			<artifactId>cargo-core-api-container</artifactId>
 			<version>${cargo.version}</version>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.cargo</groupId>
 			<artifactId>cargo-core-api-generic</artifactId>
 			<version>${cargo.version}</version>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.cargo</groupId>
 			<artifactId>cargo-core-container-tomcat</artifactId>
 			<version>${cargo.version}</version>
-			<scope>test</scope>
 		</dependency>
 		<!-- maven emberdder -->
 		<dependency>

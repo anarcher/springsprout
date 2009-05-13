@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.model.InitializationError;
 
+import springsprout.test.exception.WarPackgingException;
 import springsprout.test.web.annotation.WebTest;
 import springsprout.test.web.annotation.WebTestConfiguration;
 
@@ -38,21 +39,26 @@ public class WebTestRunnerTest {
 	}
 
 	@Test
-	public void runWebTestBestSinario() throws Exception {
+	public void bestSinario() throws Exception {
 		RunNotifier mockRN = mock(RunNotifier.class);
 		runner.run(mockRN);
 
 		verify(mockWarManager).packaging();
 		verify(mockWarManager).deploy();
 		verify(mockDataManager).insertTestData();
-		//test
+		//running tests
 		verify(mockDataManager).deleteTestData();
 		verify(mockWarManager).undeploy();
 	}
 
-	@Test
-	public void testname() throws Exception {
+	@Test(expected=WarPackgingException.class)
+	public void packingFail() throws Exception {
+		doThrow(new WarPackgingException()).when(mockWarManager).packaging();
 
+		RunNotifier mockRN = mock(RunNotifier.class);
+		runner.run(mockRN);
+
+		verify(mockWarManager).packaging();
 	}
 
 	@Test

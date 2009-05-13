@@ -6,4 +6,7 @@ public class WarPackgingException extends TestException {
 		super(message);
 	}
 
+	public WarPackgingException() {
+	}
+
 }
