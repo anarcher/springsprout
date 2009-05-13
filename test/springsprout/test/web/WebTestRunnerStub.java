@@ -12,29 +12,30 @@ import springsprout.test.exception.TestDataDeleteException;
 import springsprout.test.exception.TestDataInputException;
 import springsprout.test.exception.TestException;
 import springsprout.test.web.annotation.WebTest;
-import springsprout.test.web.annotation.WebTestConfiguration;
 
-public class WebTestRunner extends BlockJUnit4ClassRunner {
+public class WebTestRunnerStub extends BlockJUnit4ClassRunner {
 
 	String testMethodName;
 	private DataManager dataManager;
 	private WarManager warManager;
 
-	public WebTestRunner(Class<?> klass) throws InitializationError {
+	public WebTestRunnerStub(Class<?> klass) throws InitializationError {
 		super(klass);
-		WebTestConfiguration wtc = klass.getAnnotation(WebTestConfiguration.class);
-		if(wtc == null)
-			throw new IllegalStateException();
-
-		dataManager = createDataManager((String)getValue(wtc, "testDataLocation"));
-		warManager = createWarManager((String)getValue(wtc, "appName"));
+		// WebTestConfiguration wtc =
+		// klass.getAnnotation(WebTestConfiguration.class);
+		// if(wtc == null)
+		// throw new IllegalStateException();
+		//
+		// dataManager = createDataManager((String)getValue(wtc,
+		// "testDataLocation"));
+		// warManager = createWarManager((String)getValue(wtc, "appName"));
 	}
 
 	private Object getValue(Annotation annotation, String attributeName) {
 		try {
-			return annotation.annotationType().getDeclaredMethod(attributeName, new Class[0]).invoke(annotation);
-		}
-		catch (Exception ex) {
+			return annotation.annotationType().getDeclaredMethod(attributeName,
+					new Class[0]).invoke(annotation);
+		} catch (Exception ex) {
 			return null;
 		}
 	}
@@ -49,12 +50,12 @@ public class WebTestRunner extends BlockJUnit4ClassRunner {
 
 	@Override
 	protected List<FrameworkMethod> computeTestMethods() {
-		List<FrameworkMethod> annotatedMethods = getTestClass().getAnnotatedMethods(WebTest.class);
-		for(FrameworkMethod method : annotatedMethods)
+		List<FrameworkMethod> annotatedMethods = getTestClass()
+				.getAnnotatedMethods(WebTest.class);
+		for (FrameworkMethod method : annotatedMethods)
 			testMethodName += method.getName();
 		return annotatedMethods;
 	}
-
 
 	public DataManager getDataManager() {
 		return dataManager;

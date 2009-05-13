@@ -14,6 +14,7 @@ import org.apache.maven.execution.DefaultMavenExecutionRequest;
 import org.apache.maven.execution.MavenExecutionRequest;
 import org.apache.maven.execution.MavenExecutionResult;
 import org.codehaus.cargo.container.tomcat.internal.TomcatManager;
+import org.codehaus.cargo.container.tomcat.internal.TomcatManagerException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,7 +34,7 @@ public class WarManager {
 			manager = new TomcatManager(new URL(
 					"http://localhost:8080/manager/"));
 		} catch (MalformedURLException e) {
-			logger.error("TOMCAT MANAGER SETTING ERROR", e);
+			logger.debug("TOMCAT MANAGER SETTING ERROR", e);
 			throw new IllegalPathStateException();
 		}
 		this.appBaseName = "/" + appName;
@@ -75,7 +76,7 @@ public class WarManager {
 			manager.start(appBaseName);
 			appList = manager.list();
 		} catch (Exception e) {
-			logger.error("WAR DEPLOYING ERROR", e);
+			logger.debug("WAR DEPLOYING ERROR", e);
 			throw new WarDeployingException("WAR DEPLOYING ERROR");
 		}
 		if (!containAppIn(appList))
@@ -93,8 +94,11 @@ public class WarManager {
 			manager.stop(appBaseName);
 			manager.undeploy(appBaseName);
 			appList = manager.list();
+		} catch (TomcatManagerException e) {
+			if(e.getMessage().contains("No context exitsts"))
+				logger.debug("WAR UNDEPLOYING NOT NESSACERY", e);
 		} catch (Exception e) {
-			logger.error("WAR UNDEPLOYING ERROR", e);
+			logger.debug("WAR UNDEPLOYING ERROR", e);
 			throw new WarUnDeployingException("WAR UNDEPLOYING ERROR");
 		}
 		if (containAppIn(appList))
