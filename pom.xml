@@ -326,8 +326,12 @@
 					<wait>false</wait>
 					<container>
 						<containerId>tomcat6x</containerId>
-						<type>installed</type>
-						<home>/apps/apache-tomcat-6.0.18</home>
+					<!-- 	<type>installed</type>
+						<home>/apps/apache-tomcat-6.0.18</home>  -->
+						<zipUrlInstaller>
+							<url>http://archive.apache.org/dist/tomcat/tomcat-6/v6.0.18/bin/apache-tomcat-6.0.18.zip</url>
+							<installDir>target/apache-tomcat-6.0.18</installDir>
+						</zipUrlInstaller>
 					</container>
 					<deployer>
 						<type>installed</type>
