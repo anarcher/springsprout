@@ -15,6 +15,7 @@
 		<cargo.version>1.0</cargo.version>
 		<webdriver.version>0.6.964</webdriver.version>
 		<asm.version>2.2.3</asm.version>
+		<testServer.port>8080</testServer.port>
 	</properties>
 
 	<dependencies>
@@ -286,6 +287,16 @@
 		</testResources>
 		<plugins>
 			<plugin>
+				<artifactId>maven-idea-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>true</downloadJavadocs>
+					<dependenciesAsLibraries>true</dependenciesAsLibraries>
+					<useFullNames>false</useFullNames>
+				</configuration>
+			</plugin>
+			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.1-alpha-2</version>
 				<configuration>
@@ -328,7 +339,28 @@
 							</deployable>
 						</deployables>
 					</deployer>
+					<configuration>
+						<properties>
+							<cargo.servlet.port>${testServer.port}</cargo.servlet.port>
+						</properties>
+					</configuration>
 				</configuration>
+				<executions>
+					<execution>
+						<id>start-container</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>start</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>stop-container</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>stop</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

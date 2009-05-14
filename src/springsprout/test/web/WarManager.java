@@ -17,10 +17,12 @@ import org.codehaus.cargo.container.tomcat.internal.TomcatManager;
 import org.codehaus.cargo.container.tomcat.internal.TomcatManagerException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.annotation.AnnotationUtils;
 
 import springsprout.test.exception.WarDeployingException;
 import springsprout.test.exception.WarPackgingException;
 import springsprout.test.exception.WarUnDeployingException;
+import springsprout.test.web.annotation.WarConfiguration;
 
 public class WarManager {
 
@@ -28,16 +30,23 @@ public class WarManager {
 
 	TomcatManager manager;
 	String appBaseName;
+	int port;
 
-	public WarManager(String appName) {
+	public WarManager(WarConfiguration wc) {
+		this((String) AnnotationUtils.getValue(wc, "appName"),
+				(Integer) AnnotationUtils.getValue(wc, "port"));
+	}
+
+	public WarManager(String appName, int port) {
+		this.appBaseName = "/" + appName;
+		this.port = port;
 		try {
 			manager = new TomcatManager(new URL(
-					"http://localhost:8080/manager/"));
+					"http://localhost:" + port + "/manager/"));
 		} catch (MalformedURLException e) {
 			logger.debug("TOMCAT MANAGER SETTING ERROR", e);
 			throw new IllegalPathStateException();
 		}
-		this.appBaseName = "/" + appName;
 	}
 
 	public void packaging() {
@@ -95,7 +104,7 @@ public class WarManager {
 			manager.undeploy(appBaseName);
 			appList = manager.list();
 		} catch (TomcatManagerException e) {
-			if(e.getMessage().contains("No context exitsts"))
+			if (e.getMessage().contains("No context exitsts"))
 				logger.debug("WAR UNDEPLOYING NOT NESSACERY", e);
 		} catch (Exception e) {
 			logger.debug("WAR UNDEPLOYING ERROR", e);
