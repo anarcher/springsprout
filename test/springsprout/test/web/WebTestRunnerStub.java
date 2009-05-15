@@ -2,16 +2,21 @@ package springsprout.test.web;
 
 import java.util.List;
 
+import org.junit.internal.AssumptionViolatedException;
+import org.junit.internal.runners.model.EachTestNotifier;
 import org.junit.runner.notification.RunNotifier;
+import org.junit.runner.notification.StoppedByUserException;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
+import org.junit.runners.model.Statement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import springsprout.test.exception.TestDataDeleteException;
 import springsprout.test.exception.TestDataInputException;
-import springsprout.test.exception.WebTestException;
+import springsprout.test.exception.WarDeployingException;
+import springsprout.test.exception.WarPackagingException;
 import springsprout.test.web.annotation.DataConfiguration;
 import springsprout.test.web.annotation.WarConfiguration;
 import springsprout.test.web.annotation.WebTest;
@@ -97,14 +102,19 @@ public class WebTestRunnerStub extends BlockJUnit4ClassRunner {
 			warManager.packaging();
 			warManager.deploy();
 			dataManager.insertTestData();
-			super.run(arg0);
+			runTest(arg0);
+			dataManager.deleteTestData();
+			warManager.undeploy();
+		} catch (WarPackagingException e) {
+			throw e;
+		} catch (WarDeployingException e) {
+			throw e;
 		} catch (TestDataInputException e) {
-			throw new WebTestException("TEST ERROR WHILE INPUT TEST DATA!");
-		} finally {
+			throw e;
+		}catch (RuntimeException e) { // test, delete, undeploy
 			try {
+				logger.debug("TEST ERROR");
 				dataManager.deleteTestData();
-			} catch (TestDataDeleteException e) {
-				throw new WebTestException("TEST ERROR WHILE DELETE TEST DATA!");
 			} finally {
 				warManager.undeploy();
 			}
@@ -118,9 +128,31 @@ public class WebTestRunnerStub extends BlockJUnit4ClassRunner {
 			warManager.deploy();
 			super.run(arg0);
 			warManager.undeploy();
-		} catch (WebTestException e) {
-			logger.debug("ERROR WHEN TEST WITHOUT DATA MANAGER....");
+		} catch (WarPackagingException e) {
 			throw e;
+		} catch (WarDeployingException e) {
+			throw e;
+		} catch (RuntimeException e) { // test, undeploy
+			try{
+				logger.debug("TEST ERROR");
+			} finally {
+				warManager.undeploy();
+			}
+		}
+	}
+
+	private void runTest(RunNotifier notifier) {
+		EachTestNotifier testNotifier= new EachTestNotifier(notifier,
+				getDescription());
+		try {
+			Statement statement= classBlock(notifier);
+			statement.evaluate();
+		} catch (AssumptionViolatedException e) {
+			testNotifier.fireTestIgnored();
+		} catch (StoppedByUserException e) {
+			throw e;
+		} catch (Throwable e) {
+			testNotifier.addFailure(e);
 		}
 	}
 }

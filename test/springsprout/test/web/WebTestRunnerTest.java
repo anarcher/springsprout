@@ -10,7 +10,7 @@ import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.model.InitializationError;
 
 import springsprout.test.exception.WarDeployingException;
-import springsprout.test.exception.WarPackgingException;
+import springsprout.test.exception.WarPackagingException;
 import springsprout.test.exception.WarUnDeployingException;
 import springsprout.test.exception.WebTestException;
 import springsprout.test.web.annotation.WarConfiguration;
@@ -75,9 +75,9 @@ public class WebTestRunnerTest {
 		verify(mockWarManager).undeploy();
 	}
 
-	@Test(expected = WarPackgingException.class)
+	@Test(expected = WarPackagingException.class)
 	public void packingFailWithDataManager() throws Exception {
-		doThrow(new WarPackgingException()).when(mockWarManager).packaging();
+		doThrow(new WarPackagingException()).when(mockWarManager).packaging();
 
 		RunNotifier mockRN = mock(RunNotifier.class);
 		runner.run(mockRN);
@@ -101,7 +101,7 @@ public class WebTestRunnerTest {
 		verifyNoMoreInteractions(mockDataManager);
 	}
 
-	@Test(expected = WebTestException.class)
+	@Test
 	public void insertDataFailWithDataManager() throws Exception {
 		doThrow(new WebTestException()).when(mockDataManager).insertTestData();
 
@@ -111,7 +111,7 @@ public class WebTestRunnerTest {
 		verify(mockWarManager).packaging();
 		verify(mockWarManager).deploy();
 		verify(mockDataManager).insertTestData();
-		verify(mockDataManager, never()).deleteTestData();
+		verify(mockDataManager).deleteTestData();
 		verify(mockWarManager).undeploy();
 	}
 
@@ -160,11 +160,11 @@ public class WebTestRunnerTest {
 		verify(mockWarManager).undeploy();
 	}
 
-	@Test(expected = WarPackgingException.class)
+	@Test(expected = WarPackagingException.class)
 	public void packingFailWithoutDataManager() throws Exception {
 		runner.setDataManager(null);
 
-		doThrow(new WarPackgingException()).when(mockWarManager).packaging();
+		doThrow(new WarPackagingException()).when(mockWarManager).packaging();
 
 		RunNotifier mockRN = mock(RunNotifier.class);
 		runner.run(mockRN);

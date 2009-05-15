@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.AnnotationUtils;
 
 import springsprout.test.exception.WarDeployingException;
-import springsprout.test.exception.WarPackgingException;
+import springsprout.test.exception.WarPackagingException;
 import springsprout.test.exception.WarUnDeployingException;
 import springsprout.test.web.annotation.WarConfiguration;
 
@@ -65,15 +65,15 @@ public class WarManager {
 				if (result.hasExceptions()) {
 					logger.debug(((Exception) result.getExceptions().get(0))
 							.getMessage());
-					throw new WarPackgingException("WAR NOT CREATED ERROR");
+					throw new WarPackagingException("WAR NOT CREATED ERROR");
 				}
 				logger.debug("WAR PACKAGING OK....");
 			} catch (MavenEmbedderException e) {
 				logger.debug("MAVEN WAR:WAR ERROR", e);
-				throw new WarPackgingException("MAVEN WAR:WAR ERROR");
+				throw new WarPackagingException("MAVEN WAR:WAR ERROR");
 			}
 		} else {
-			throw new WarPackgingException("MAVEN CONFIGURATION ERROR");
+			throw new WarPackagingException("MAVEN CONFIGURATION ERROR");
 		}
 	}
 

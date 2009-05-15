@@ -2,6 +2,7 @@ package springsprout.test.web;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
@@ -17,6 +18,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 
 import springsprout.test.exception.DataManagerSettingException;
@@ -68,6 +70,13 @@ public class DataManager {
 			logger.debug("TEST DATA INPUT OK....");
 		} catch (Exception e) {
 			logger.debug("TEST DATA INPUT ERROR", e);
+			try {
+				dataSource.getConnection().rollback();
+				logger.debug("TEST DATA INPUT ROLLBACK OK....", e);
+			} catch (SQLException e1) {
+				logger.debug("TEST DATA INPUT ROLLBACK FAILED!", e);
+				throw new TestDataInputException("TEST DATA INPUT ROLLBACK FAILED");
+			}
 			throw new TestDataInputException("TEST DATA INPUT ERROR");
 		}
 	}
@@ -76,10 +85,17 @@ public class DataManager {
 		try {
 			DatabaseOperation operation = DatabaseOperation.DELETE_ALL;
 			operation.execute(databaseConnection, dataset);
+			dataSource.getConnection().commit();
 			logger.debug("TEST DATA DELETE OK....");
 		} catch (Exception e) {
-			e.printStackTrace();
 			logger.debug("TEST DATA DELETE ERROR", e);
+			try {
+				dataSource.getConnection().rollback();
+				logger.debug("TEST DATA DELETE ROLLBACK OK....", e);
+			} catch (SQLException e1) {
+				logger.debug("TEST DATA DELETE ROLLBACK FAILED!", e);
+				throw new TestDataInputException("TEST DATA DELETE ROLLBACK FAILED");
+			}
 			throw new TestDataDeleteException("TEST DATA DELETE ERROR");
 		}
 	}
