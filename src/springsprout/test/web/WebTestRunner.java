@@ -42,11 +42,11 @@ public class WebTestRunner extends BlockJUnit4ClassRunner {
 	}
 
 	private WarManager createWarManager(WarConfiguration wc) {
-		return new WarManager(wc);
+		return new DefaultWarManager(wc);
 	}
 
 	private DataManager createDataManager(DataConfiguration dc) {
-		return new DataManager(dc);
+		return new DefaultDataManager(dc);
 	}
 
 	@Override
