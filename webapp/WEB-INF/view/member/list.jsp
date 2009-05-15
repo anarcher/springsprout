@@ -13,7 +13,7 @@
 <div>
 <a href="<c:url value="/member/add.do"/>">회원 추가</a>
 
-<form method="get" action="/member/list.do">
+<form method="get" action="<c:url value="/member/list.do"/>">
 	이름: <input type="text" name="s_name" value="${c.searchParam.name}" />
 	이메일: <input type="text" name="s_email" value="${c.searchParam.email}" />
 	<input type="hidden" name="p_size" value="${c.pageParam.size}" />
@@ -34,7 +34,7 @@
 총 갯수: ${c.pageParam.totalRowsCount}<br/>
 현재 페이지 첫 번째 목록 인덱스: ${c.pageParam.firstRowNumber}<br/>
 
-<form method="get" action="/member/list.do">
+<form method="get" action="<c:url value="/member/list.do"/>">
 	<select name="p_size">
 		<c:forEach items="${c.pageParam.pageSizes}" var="currentSize">
 			<c:choose>
@@ -53,28 +53,28 @@
 </form>
 <c:if test="${c.pageParam.totalRowsCount > c.pageParam.size}">
 
-	<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&${c.searchParam}&${c.orderParam}">처음</a> |
+	<a href="<c:url value="/member/list.do?p_page=1&p_size=${c.pageParam.size}&${c.searchParam}&${c.orderParam}"/>">처음</a> |
 
 	<c:if test="${c.pageParam.beginPage - 10 > 0}">
-		<a href="/member/list.do?p_page=${c.pageParam.beginPage - 10}&p_size=${c.pageParam.size}&${c.searchParam}&${c.orderParam}">이전</a> |
+		<a href="<c:url value="/member/list.do?p_page=${c.pageParam.beginPage - 10}&p_size=${c.pageParam.size}&${c.searchParam}&${c.orderParam}"/>">이전</a> |
 	</c:if>
 
 	<c:forEach begin="${c.pageParam.beginPage}" end="${c.pageParam.endPage}" var="current" >
 		<c:choose>
 			<c:when test="${current == c.pageParam.page}">
-				<a href="/member/list.do?p_page=${current}&p_size=${c.pageParam.size}&${c.searchParam}&${c.orderParam}"><strong>${current}</strong></a> |
+				<a href="<c:url value="/member/list.do?p_page=${current}&p_size=${c.pageParam.size}&${c.searchParam}&${c.orderParam}"/>"><strong>${current}</strong></a> |
 			</c:when>
 			<c:otherwise>
-				<a href="/member/list.do?p_page=${current}&p_size=${c.pageParam.size}&${c.searchParam}&${c.orderParam}">${current}</a> |
+				<a href="<c:url value="/member/list.do?p_page=${current}&p_size=${c.pageParam.size}&${c.searchParam}&${c.orderParam}"/>">${current}</a> |
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
 
 	<c:if test="${c.pageParam.beginPage + 10 < c.pageParam.totalPage}">
-		<a href="/member/list.do?p_page=${c.pageParam.endPage + 1}&p_size=${c.pageParam.size}&${c.searchParam}&${c.orderParam}">다음</a> |
+		<a href="<c:url value="/member/list.do?p_page=${c.pageParam.endPage + 1}&p_size=${c.pageParam.size}&${c.searchParam}&${c.orderParam}"/>">다음</a> |
 	</c:if>
 
-	<a href="/member/list.do?p_page=${c.pageParam.totalPage}&p_size=${c.pageParam.size}&${c.searchParam}&${c.orderParam}">마지막</a>
+	<a href="<c:url value="/member/list.do?p_page=${c.pageParam.totalPage}&p_size=${c.pageParam.size}&${c.searchParam}&${c.orderParam}"/>">마지막</a>
 
 </c:if>
 
@@ -83,27 +83,27 @@
 		<th>
 			<c:choose>
 				<c:when test="${c.orderParam.field == 'email' && c.orderParam.direction == 'asc'}">
-					<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&${c.searchParam}&o_field=email&o_direction=desc">이메일V</a>
+					<a href="<c:url value="/member/list.do?p_page=1&p_size=${c.pageParam.size}&${c.searchParam}&o_field=email&o_direction=desc"/>">이메일V</a>
 				</c:when>
 				<c:otherwise>
-					<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&${c.searchParam}&o_field=email&o_direction=asc">이메일^</a>
+					<a href="<c:url value="/member/list.do?p_page=1&p_size=${c.pageParam.size}&${c.searchParam}&o_field=email&o_direction=asc"/>">이메일^</a>
 				</c:otherwise>
 			</c:choose>
 		</th>
 		<th>
 			<c:choose>
 				<c:when test="${c.orderParam.field == 'name' && c.orderParam.direction == 'asc'}">
-					<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&${c.searchParam}&o_field=name&o_direction=desc">이름V</a>
+					<a href="<c:url value="/member/list.do?p_page=1&p_size=${c.pageParam.size}&${c.searchParam}&o_field=name&o_direction=desc"/>">이름V</a>
 				</c:when>
 				<c:otherwise>
-					<a href="/member/list.do?p_page=1&p_size=${c.pageParam.size}&${c.searchParam}&o_field=name&o_direction=asc">이름^</a>
+					<a href="<c:url value="/member/list.do?p_page=1&p_size=${c.pageParam.size}&${c.searchParam}&o_field=name&o_direction=asc"/>">이름^</a>
 				</c:otherwise>
 			</c:choose>
 		</th>
 	</tr>
 <c:forEach var="member" items="${memberList}">
 	<tr>
-		<td><a href="/member/${member.id}.do?${c.allParam}">${member.email}</a></td>
+		<td><a href="<c:url value="/member/${member.id}.do?${c.allParam}"/>">${member.email}</a></td>
 		<td>${member.name}</td>
 	</tr>
 </c:forEach>

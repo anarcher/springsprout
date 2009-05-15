@@ -14,7 +14,7 @@
 
 <body>
 <h1>수정</h1>
-<a href="/member/list.do?${c.allParam}">취소</a>
+<a href="<c:url value="/member/list.do?${c.allParam}"/>">취소</a>
 <form:form commandName="member" method="post">
 이메일 : <form:input path="email" />
 	<form:errors path="email" />

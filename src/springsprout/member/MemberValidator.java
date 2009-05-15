@@ -10,11 +10,14 @@ import springsprout.domain.Member;
 public class MemberValidator {
 
 	public void validate(Member member, Errors errors) {
-		String name = member.getName();
-		if (!StringUtils.hasLength(name)) {
-			errors.rejectValue("email", "required", "required");
-			errors.rejectValue("password", "required", "required");
+		if (!StringUtils.hasLength(member.getName())) {
 			errors.rejectValue("name", "required", "required");
+		}
+		if (!StringUtils.hasLength(member.getEmail())) {
+			errors.rejectValue("email", "required", "required");
+		}
+		if (!StringUtils.hasLength(member.getPassword())) {
+			errors.rejectValue("password", "required", "required");
 		}
 	}
 }
