@@ -13,7 +13,6 @@ import org.junit.runners.model.Statement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import springsprout.test.exception.TestDataDeleteException;
 import springsprout.test.exception.TestDataInputException;
 import springsprout.test.exception.WarDeployingException;
 import springsprout.test.exception.WarPackagingException;
