@@ -23,7 +23,7 @@ public class SampleWebTest {
 
 	@WebTest
 	public void sinario2(){
-		DataManager dm = new DefaultDataManager("integration/sample/testData1.xml", DataType.XML);
+		DataManager dm = new DefaultDataManager("integration/sample/testData2.xml", DataType.XML);
 		dm.insertTestData();
 		System.out.println("test2");
 	}
