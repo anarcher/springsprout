@@ -25,7 +25,6 @@ public class WebTestRunner extends BlockJUnit4ClassRunner {
 
 	public WebTestRunner(Class<?> klass) throws InitializationError {
 		super(klass);
-
 		logger.debug("LOADING TEST CONFIGURATIONS....");
 		WarConfiguration wc = klass.getAnnotation(WarConfiguration.class);
 		if (wc == null)

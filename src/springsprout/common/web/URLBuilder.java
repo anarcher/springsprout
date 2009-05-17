@@ -1,4 +1,4 @@
-package springsprout.web;
+package springsprout.common.web;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -6,7 +6,7 @@ import java.net.URLEncoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import springsprout.web.exception.EncodingException;
+import springsprout.common.web.exception.EncodingException;
 
 
 public class URLBuilder {
@@ -20,7 +20,6 @@ public class URLBuilder {
 	}
 
 	public URLBuilder(String encoding) {
-
 		builder = new StringBuilder();
 		this.encoding = encoding;
 	}

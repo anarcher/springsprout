@@ -1,4 +1,4 @@
-package springsprout.member.support;
+package springsprout.modules.member.support;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.ServletRequestUtils;
 
-import springsprout.paging.PageParam;
+import springsprout.common.web.PageParam;
 
 @Component
 public class MemberContext {

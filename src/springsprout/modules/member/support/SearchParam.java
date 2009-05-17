@@ -1,7 +1,7 @@
-package springsprout.member.support;
+package springsprout.modules.member.support;
 
 import springsprout.common.System;
-import springsprout.web.URLBuilder;
+import springsprout.common.web.URLBuilder;
 
 public class SearchParam {
 

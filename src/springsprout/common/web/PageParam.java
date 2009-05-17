@@ -1,7 +1,6 @@
-package springsprout.paging;
+package springsprout.common.web;
 
 import springsprout.common.System;
-import springsprout.web.URLBuilder;
 
 public class PageParam {
 

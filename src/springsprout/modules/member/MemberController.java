@@ -1,4 +1,4 @@
-package springsprout.member;
+package springsprout.modules.member;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import springsprout.domain.Member;
-import springsprout.member.support.MemberContext;
+import springsprout.modules.member.support.MemberContext;
 
 @Controller
 @SessionAttributes("member")
@@ -105,7 +105,7 @@ public class MemberController {
 	public String delete(@PathVariable int id, HttpServletRequest request,
 			HttpServletResponse response) throws ServletRequestBindingException {
 		context.bindParams(request);
-		service.deleteById(id);
+		service.delete(id);
 		return context.getRedirectToListURL();
 	}
 

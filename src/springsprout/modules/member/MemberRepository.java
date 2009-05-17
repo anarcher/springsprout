@@ -1,4 +1,4 @@
-package springsprout.member;
+package springsprout.modules.member;
 
 import java.util.List;
 
@@ -12,11 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
+import springsprout.common.web.PageParam;
 import springsprout.domain.Member;
-import springsprout.member.support.MemberContext;
-import springsprout.member.support.OrderParam;
-import springsprout.member.support.SearchParam;
-import springsprout.paging.PageParam;
+import springsprout.modules.member.support.MemberContext;
+import springsprout.modules.member.support.OrderParam;
+import springsprout.modules.member.support.SearchParam;
 
 @Repository
 public class MemberRepository {

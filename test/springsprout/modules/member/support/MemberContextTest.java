@@ -1,4 +1,4 @@
-package springsprout.member.support;
+package springsprout.modules.member.support;
 
 import static org.junit.Assert.*;
 
@@ -6,7 +6,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 
-import springsprout.paging.PageParam;
+import springsprout.common.web.PageParam;
+import springsprout.modules.member.support.MemberContext;
+import springsprout.modules.member.support.OrderParam;
+import springsprout.modules.member.support.SearchParam;
 
 
 public class MemberContextTest {

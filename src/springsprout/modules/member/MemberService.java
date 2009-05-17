@@ -1,4 +1,4 @@
-package springsprout.member;
+package springsprout.modules.member;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import springsprout.domain.Member;
-import springsprout.member.support.MemberContext;
+import springsprout.modules.member.support.MemberContext;
 
 @Service
 @Transactional
@@ -29,7 +29,7 @@ public class MemberService {
 		return repository.getMemberById(id);
 	}
 
-	public void deleteById(int id) {
+	public void delete(int id) {
 		repository.delete(id);
 	}
 

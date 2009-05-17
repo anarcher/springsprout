@@ -1,8 +1,10 @@
-package springsprout.web;
+package springsprout.common.web;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import springsprout.common.web.URLBuilder;
 
 
 public class URLBuilderTest {
