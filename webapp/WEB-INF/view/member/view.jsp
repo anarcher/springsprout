@@ -11,9 +11,9 @@
 
 <body>
 <div>
-<a href="<c:url value="/member/list.do?${c.allParam}"/>">목록으로</a> |
-<a href="<c:url value="/member/update/${member.id}.do?${c.allParam}"/>">수정</a> |
-<a href="<c:url value="/member/delete/${member.id}.do?${c.allParam}"/>">삭제</a>
+<a id="listButton" href="<c:url value="/member/list.do?${c.allParam}"/>">목록으로</a> |
+<a id="updateButton" href="<c:url value="/member/update/${member.id}.do?${c.allParam}"/>">수정</a> |
+<a id="deleteButton" href="<c:url value="/member/delete/${member.id}.do?${c.allParam}"/>">삭제</a>
 </div>
 
 <div>

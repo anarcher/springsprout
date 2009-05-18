@@ -6,13 +6,13 @@ import org.openqa.selenium.support.FindBy;
 
 public class MemberForm {
 
-	@FindBy(how = How.ID, using = "name")
+//	@FindBy(how = How.ID, using = "name")
 	protected WebElement name;
 
-	@FindBy(how = How.ID, using = "email")
+//	@FindBy(how = How.ID, using = "email")
 	protected WebElement email;
 
-	@FindBy(how = How.ID, using = "password")
+//	@FindBy(how = How.ID, using = "password")
 	protected WebElement password;
 
 	@FindBy(how = How.ID, using = "name.errors")

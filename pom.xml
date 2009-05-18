@@ -15,7 +15,8 @@
 		<cargo.version>1.0</cargo.version>
 		<webdriver.version>0.6.964</webdriver.version>
 		<asm.version>2.2.3</asm.version>
-		<testServer.port>8090</testServer.port>
+		<testServer.port>8080</testServer.port>
+		<cargo.wait>false</cargo.wait>
 	</properties>
 
 	<dependencies>
@@ -243,7 +244,7 @@
 				<artifactId>cargo-maven2-plugin</artifactId>
 				<version>1.0.1-SNAPSHOT</version>
 				<configuration>
-					<wait>false</wait>
+					<wait>${cargo.wait}</wait>
 					<container>
 						<containerId>tomcat6x</containerId>
 						<type>installed</type>
@@ -251,13 +252,6 @@
 					</container>
 					<deployer>
 						<type>installed</type>
-						<deployables>
-							<deployable>
-								<groupId>kr.pe.s2c</groupId>
-								<artifactId>springsprout</artifactId>
-								<type>war</type>
-							</deployable>
-						</deployables>
 					</deployer>
 					<configuration>
 						<properties>

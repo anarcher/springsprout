@@ -11,7 +11,7 @@
 
 <body>
 <div>
-<a href="<c:url value="/member/add.do"/>">회원 추가</a>
+<a id="addButton" href="<c:url value="/member/add.do"/>">회원 추가</a>
 
 <form method="get" action="<c:url value="/member/list.do"/>">
 	이름: <input type="text" name="s_name" value="${c.searchParam.name}" />
