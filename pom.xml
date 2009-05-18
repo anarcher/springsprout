@@ -6,7 +6,7 @@
 	<packaging>war</packaging>
 	<name>keesun</name>
 	<version>0.0.1-SNAPSHOT</version>
-	<description>keesun's board</description>
+	<description>http://s2c.pe.kr</description>
 
 	<properties>
 		<java.version>1.5</java.version>
@@ -15,7 +15,7 @@
 		<cargo.version>1.0</cargo.version>
 		<webdriver.version>0.6.964</webdriver.version>
 		<asm.version>2.2.3</asm.version>
-		<testServer.port>8080</testServer.port>
+		<testServer.port>8090</testServer.port>
 	</properties>
 
 	<dependencies>
@@ -101,22 +101,6 @@
 			<artifactId>com.springsource.org.objectweb.asm.commons</artifactId>
 			<version>${asm.version}</version>
 		</dependency>
-		<!--
-			opensprout's spring <dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>org.springframework.web.servlet</artifactId>
-			<version>[3.0.0.BUILD-00000000000000,9.9.9.BUILD]</version>
-			</dependency> <dependency> <groupId>org.springframework</groupId>
-			<artifactId>org.springframework.aspects</artifactId>
-			<version>[3.0.0.BUILD-00000000000000,9.9.9.BUILD]</version>
-			</dependency> <dependency> <groupId>org.springframework</groupId>
-			<artifactId>org.springframework.orm</artifactId>
-			<version>[3.0.0.BUILD-00000000000000,9.9.9.BUILD]</version>
-			</dependency> <dependency> <groupId>org.springframework</groupId>
-			<artifactId>org.springframework.test</artifactId>
-			<version>[3.0.0.BUILD-00000000000000,9.9.9.BUILD]</version>
-			</dependency>
-		-->
 		<!-- spring's hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -188,105 +172,11 @@
 			<artifactId>com.springsource.org.hsqldb</artifactId>
 			<version>1.8.0.9</version>
 		</dependency>
-		<!-- test -->
+		<!-- WebTUnit -->
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.6</version>
-		</dependency>
-		<dependency>
-			<groupId>org.dbunit</groupId>
-			<artifactId>dbunit</artifactId>
-			<version>2.4.4</version>
-		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<version>1.7</version>
-			<scope>test</scope>
-		</dependency>
-		<!-- webdriver -->
-		<dependency>
-			<groupId>org.openqa.selenium.webdriver</groupId>
-			<artifactId>webdriver-support</artifactId>
-			<version>${webdriver.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.openqa.selenium.webdriver</groupId>
-			<artifactId>webdriver-htmlunit</artifactId>
-			<version>${webdriver.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.openqa.selenium.webdriver</groupId>
-			<artifactId>webdriver-firefox</artifactId>
-			<version>${webdriver.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.openqa.selenium.webdriver</groupId>
-			<artifactId>webdriver-ie</artifactId>
-			<version>${webdriver.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.openqa.selenium.webdriver</groupId>
-			<artifactId>webdriver-safari</artifactId>
-			<version>${webdriver.version}</version>
-		</dependency>
-		<!-- cargo -->
-		<dependency>
-			<groupId>org.codehaus.cargo</groupId>
-			<artifactId>cargo-core-api-module</artifactId>
-			<version>${cargo.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.cargo</groupId>
-			<artifactId>cargo-core-api-container</artifactId>
-			<version>${cargo.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.cargo</groupId>
-			<artifactId>cargo-core-api-generic</artifactId>
-			<version>${cargo.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.cargo</groupId>
-			<artifactId>cargo-core-container-tomcat</artifactId>
-			<version>${cargo.version}</version>
-		</dependency>
-		<!-- maven emberdder -->
-		<dependency>
-			<groupId>org.apache.maven</groupId>
-			<artifactId>maven-embedder</artifactId>
-			<version>3.0-alpha-2</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>wagon-http-lightweight</artifactId>
-					<groupId>org.apache.maven.wagon</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>wagon-ssh</artifactId>
-					<groupId>org.apache.maven.wagon</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>wagon-ssh-external</artifactId>
-					<groupId>org.apache.maven.wagon</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>wagon-file</artifactId>
-					<groupId>org.apache.maven.wagon</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>maven-toolchain</artifactId>
-					<groupId>org.apache.maven</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>plexus-plugin-manager</artifactId>
-					<groupId>org.sonatype.plexus</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>maven-mercury</artifactId>
-					<groupId>org.apache.maven</groupId>
-				</exclusion>
-			</exclusions>
+			<groupId>org.opensprout</groupId>
+			<artifactId>webtunit</artifactId>
+			<version>0.1</version>
 		</dependency>
 	</dependencies>
 
@@ -426,6 +316,11 @@
 			<id>opensprout nexus</id>
 			<name>OpenSprout Nexus public</name>
 			<url>http://www.opensprout.org/nexus/content/groups/public</url>
+		</repository>
+		<repository>
+			<id>openqa-releases</id>
+			<name>OpenQA Releases</name>
+			<url>http://nexus.openqa.org/content/repositories/releases</url>
 		</repository>
 	</repositories>
 

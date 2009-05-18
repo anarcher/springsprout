@@ -1,13 +1,12 @@
 package integration.sample;
 
 import org.junit.runner.RunWith;
-
-import springsprout.test.web.DataManager;
-import springsprout.test.web.DefaultDataManager;
-import springsprout.test.web.WebTestRunner;
-import springsprout.test.web.annotation.WarConfiguration;
-import springsprout.test.web.annotation.WebTest;
-import springsprout.test.web.enumeration.DataType;
+import org.opensprout.webtest.DataManager;
+import org.opensprout.webtest.DefaultDataManager;
+import org.opensprout.webtest.WebTestRunner;
+import org.opensprout.webtest.configuration.DataType;
+import org.opensprout.webtest.configuration.WarConfiguration;
+import org.opensprout.webtest.configuration.WebTest;
 
 @RunWith(WebTestRunner.class)
 @WarConfiguration(appName="springsprout")

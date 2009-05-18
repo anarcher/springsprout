@@ -1,17 +1,46 @@
 package integration.pageobject;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.How;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class MemberListPage {
 
 	private WebDriver driver;
 
+	@FindBy(how = How.LINK_TEXT, using = "회원 추가")
+	private WebElement addButton;
+
+	public WebElement getAddButton() {
+		return addButton;
+	}
+
+	public void setAddButton(WebElement addButton) {
+		this.addButton = addButton;
+	}
+
 	public MemberListPage(WebDriver driver) {
 		this.driver = driver;
 	}
 
-	public MemberViewPage veiwMember(int id) {
-		driver.navigate().to("http://localhost:8080/springsprout/member/" + id);
-		return new MemberViewPage(driver);
+	public MemberAddPage toAddForm() {
+		addButton.click();
+		return PageFactory.initElements(driver, MemberAddPage.class);
+	}
+
+	public int getTableRows() {
+		return driver.findElements(By.xpath("//tr")).size() - 1;
+	}
+
+	public boolean contains(String value) {
+		return driver.getPageSource().contains(value);
+	}
+
+	public MemberViewPage veiwMember(String email) {
+		driver.findElement(By.linkText(email)).click();
+		return PageFactory.initElements(driver, MemberViewPage.class);
 	}
 }
