@@ -4,13 +4,15 @@
 */
 html,body{height:100%;}
 *{margin:0;padding:0;}
-body{background-color:white;font:13.34px helvetica,arial,clean,sans-serif;*font-size:small;text-align:center;}
+body{background-color:#FBFBFB;font:13.34px helvetica,arial,clean,sans-serif;*font-size:small;text-align:center;}
 body *{line-height:1.4em;}
 img{border:0;}
 a{color:#4183c4;text-decoration:none;}
 a.action{color:#d00;text-decoration:underline;}
 a.action span{text-decoration:none;}
 a:hover{text-decoration:underline;}
+#main{min-height:100%;height:auto!important;height:100%;margin:0 auto -8.6em;}
+.push{height:8.6em;padding-bottom:4em;}
 
 .site{width:69em;margin:0 auto;padding:0 3em;text-align:left;}
 .right{float:right;}
@@ -44,9 +46,25 @@ a:hover{text-decoration:underline;}
 #header .actions a:hover{text-decoration:none;background-color:#dcdcdc;}
 #header.basic{border-bottom:5px solid #a4db42;margin-bottom:1em;}
 
-#home .announce{min-width:75em;margin-top:-1em;background-color:#fbfbfb;}
+#home .announce{min-width:75em;margin-top:-1em;background-color:#FBFBFB;}
 #home .announce h1{font-family:"HelveticaNeue-Light",Helvetica,Arial,sans-serif;font-size:240%;text-align:center;font-weight:normal;color:#133855;padding:.75em 0;}
-#home .features{border-top:5px solid #a4db42;background-color:#e9fcd9;overflow:hidden;padding:1em 2em 3em 2em;}
+#home .features{border-top:5px solid #a4db42;background-color:#f8fcf3;overflow:hidden;padding:1em 2em 3em 2em;}
+#home .notice{border-top:5px solid #a4db42;background-color:#FBFBFB;overflow:hidden;padding:1em 2em 3em 2em;}
+#home .media{border-top:5px solid #a4db42;background-color:#f8fcf3;overflow:hidden;padding:1em 2em 3em 2em;}
+#home .join{border-top:5px solid #a4db42;background-color:#FBFBFB;overflow:hidden;padding:1em 2em 3em 2em;}
 
 #login{width:31em;}
 #forgot_password{width:31em;}
+
+/*
+	footer
+*/
+#footer{height:8.6em;background:#bbccd9 url(/images/bg.png) 0 0 repeat-x;overflow:hidden;color:#cadcea;min-width:75em;}
+#footer a{color:white;text-decoration:underline;}
+#footer .info{padding:2.9em 0 3.3em 0;float:left;}
+#footer .info .links{padding-bottom:.4em;border-bottom:3px solid #5c8ab3;}
+#footer .info .company{padding-top:.4em;}
+#footer .sponsor{padding:2.75em 0 1em 0;float:right;width:15em;}
+#footer .sponsor img{float:right;margin-left:.75em;}
+#footer .sponsor a{text-decoration:none;}
+#footer .sponsor div{text-align:right;font-size:.9em;margin-top:.7em;}

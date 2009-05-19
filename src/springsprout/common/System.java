@@ -2,6 +2,6 @@ package springsprout.common;
 
 public class System {
 
-	public static String ENCODING = "UTF-8";
+	public static final String ENCODING = "UTF-8";
 
 }
